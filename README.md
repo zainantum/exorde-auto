@@ -4,3 +4,5 @@
 # check log
 journalctl -u cron.service
 
+# download
+wget https://raw.githubusercontent.com/zainantum/checker/main/c1.sh && chmod 777 c1.sh
