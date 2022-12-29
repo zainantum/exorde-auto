@@ -5,7 +5,7 @@ do
     echo $pid;
     if pstree $pid | grep python
     then
-        echo "NOT OK";
+        echo "OK";
     else
         echo "NOT OK";
 	name=$(screen -ls | grep $pid | awk '{print $1}' | cut -d. -f 2)
