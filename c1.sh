@@ -10,7 +10,7 @@ do
     else
         echo "Worker $name is not working";
         #/usr/bin/screen -SX $pid quit;
-	echo $name;
-	screen -r $name -X stuff 'python Launcher.py -m 0x80bE97A5580061a647bb04ADaeb8d18fe963ae55 -l 3'`echo -ne '\015'`
+	      echo $name;
+	      screen -r $name -X stuff 'python Launcher.py -m 0x80bE97A5580061a647bb04ADaeb8d18fe963ae55 -l 3'`echo -ne '\015'`
     fi
 done
