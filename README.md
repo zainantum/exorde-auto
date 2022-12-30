@@ -4,9 +4,12 @@
 # check log
 ``` journalctl -u cron.service ```
 
-# download
+# download checker
 ``` wget https://raw.githubusercontent.com/zainantum/checker/main/c1.sh && chmod 777 c1.sh ```
 
 # download stuck
 ``` wget https://raw.githubusercontent.com/zainantum/checker/main/stuck.sh && chmod 777 stuck.sh ```
+
+# download updater
+``` https://raw.githubusercontent.com/zainantum/checker/main/updater.sh && chmod 777 updater.sh ```
 
