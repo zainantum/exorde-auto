@@ -5,7 +5,7 @@ do
     #echo $pid;
     name=$(screen -ls | grep $pid | awk '{print $1}' | cut -d. -f 2)
     screen -X -S $name hardcopy log.txt
-    if grep -r "COLLECT DATA" log.txt
+    if grep -r "Init Version Check" log.txt
     then
         echo "Restart worker $name. Worker Stuck";
         screen -r $name -X stuff $'\003'
