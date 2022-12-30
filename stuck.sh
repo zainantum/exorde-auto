@@ -2,10 +2,9 @@
 pidList=$(screen -ls | awk '/[0-9]{3,}\./ {print strtonum($1)}')
 for pid in ${pidList[@]};
 do
-    #echo $pid;
     name=$(screen -ls | grep $pid | awk '{print $1}' | cut -d. -f 2)
     screen -X -S $name hardcopy log.txt
-    if [[ tail -n5 log.txt | grep 'Init Version Check' || tail -n5 log.txt | grep 'Claiming Master' ]]
+    if tail -n5 log.txt | grep 'Init Version Check' || tail -n5 log.txt | grep 'Claiming Master'
     then
         echo "Restart worker $name. Worker Stuck";
         screen -r $name -X stuff $'\003'
