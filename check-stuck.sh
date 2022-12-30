@@ -5,12 +5,18 @@ do
     #echo $pid;
     name=$(screen -ls | grep $pid | awk '{print $1}' | cut -d. -f 2)
     screen -X -S $name hardcopy log.txt
-    if grep -r "Init Version Check" log.txt
+    if tail -n5 log.txt | grep 'Init Version Check'
     then
         echo "Restart worker $name. Worker Stuck";
         screen -r $name -X stuff $'\003'
         sleep 15
-        screen -r $name -X stuff 'python Launcher.py -m 0x80bE97A5580061a647bb04ADaeb8d18fe963ae55 -l 3'`echo -ne '\015'`
+        screen -r $name -X stuff 'python Launcher.py -m 0x80bE97A5580061a647bb04ADaeb8d18fe963ae55 -l 3'`echo -ne '\015'
+    elif tail -n5 log.txt | grep 'Claiming Master'
+    then
+        echo "Restart worker $name. Worker Stuck";
+        screen -r $name -X stuff $'\003'
+        sleep 15
+        screen -r $name -X stuff 'python Launcher.py -m 0x80bE97A5580061a647bb04ADaeb8d18fe963ae55 -l 3'`echo -ne '\015'
     else
         echo "Worker $name running perfectly";
     fi
