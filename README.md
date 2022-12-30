@@ -8,5 +8,5 @@ journalctl -u cron.service
 wget https://raw.githubusercontent.com/zainantum/checker/main/c1.sh && chmod 777 c1.sh
 
 # download stuck
-wget https://raw.githubusercontent.com/zainantum/checker/main/stuck.sh && chmod 777 stuck.sh
+``` wget https://raw.githubusercontent.com/zainantum/checker/main/stuck.sh && chmod 777 stuck.sh ```
 
