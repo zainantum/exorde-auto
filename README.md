@@ -11,5 +11,5 @@
 ``` wget https://raw.githubusercontent.com/zainantum/checker/main/stuck.sh && chmod 777 stuck.sh ```
 
 # download updater
-``` https://raw.githubusercontent.com/zainantum/checker/main/updater.sh && chmod 777 updater.sh ```
+``` wget https://raw.githubusercontent.com/zainantum/checker/main/updater.sh && chmod 777 updater.sh ```
 
