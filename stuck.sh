@@ -3,6 +3,7 @@ pidList=$(screen -ls | awk '/[0-9]{3,}\./ {print strtonum($1)}')
 for pid in ${pidList[@]};
 do
     name=$(screen -ls | grep $pid | awk '{print $1}' | cut -d. -f 2)
+    truncate -s 0 log.txt
     screen -X -S $name hardcopy log.txt
     if tail -n5 log.txt | grep 'Init Version Check' || tail -n5 log.txt | grep 'Claiming Master' || tail -n5 log.txt | grep 'stakeChecking'
     then
