@@ -41,3 +41,8 @@ install pstree
 # download updater
 ``` wget https://raw.githubusercontent.com/zainantum/checker/main/updater.sh && chmod 777 updater.sh ```
 
+# download create screen
+https://raw.githubusercontent.com/zainantum/checker/main/createScreen.sh && chmod 777 createScreen.sh
+
+# download create swap
+https://raw.githubusercontent.com/zainantum/checker/main/swap.sh && chmod 777 swap.sh
