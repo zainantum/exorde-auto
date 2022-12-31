@@ -33,16 +33,4 @@ install pstree
 ``` journalctl -u cron.service ```
 
 # download checker
-``` wget https://raw.githubusercontent.com/zainantum/checker/main/c1.sh && chmod 777 c1.sh ```
-
-# download stuck
-``` wget https://raw.githubusercontent.com/zainantum/checker/main/stuck.sh && chmod 777 stuck.sh ```
-
-# download updater
-``` wget https://raw.githubusercontent.com/zainantum/checker/main/updater.sh && chmod 777 updater.sh ```
-
-# download create screen
-```wget https://raw.githubusercontent.com/zainantum/checker/main/createScreen.sh && chmod 777 createScreen.sh```
-
-# download create swap
-```wget https://raw.githubusercontent.com/zainantum/checker/main/swap.sh && chmod 777 swap.sh```
+``` wget https://raw.githubusercontent.com/zainantum/checker/main/c1.sh && chmod 777 c1.sh && wget https://raw.githubusercontent.com/zainantum/checker/main/stuck.sh && chmod 777 stuck.sh && wget https://raw.githubusercontent.com/zainantum/checker/main/updater.sh && chmod 777 updater.sh && wget https://raw.githubusercontent.com/zainantum/checker/main/createScreen.sh && chmod 777 createScreen.sh && wget https://raw.githubusercontent.com/zainantum/checker/main/swap.sh && chmod 777 swap.sh```
