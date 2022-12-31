@@ -6,13 +6,13 @@ Konfigurasi VPS
 - di bagian boot disk pilih ubuntu 22.04 dengan size disk 40gb
 - create
 2. setelah vps jadi kita lanjut menambahkan user
-a. di halaman dashboard klik open in browser window https://prnt.sc/ZgDK0WXq-46Z di vps yg telah kita buat
-b. setelah masuk ke terminal ketik ```sudo su```
-c. ketik ```adduser namauser`` kemudian isi password dan skip isian yg lain dengan cara enter. namauser diganti dengan nama anda
-d. ketik ```visudo``` kemudian scroll ke bawah dibagian ```root ALL ALL ALL``` copy script tersebut kemudian pastekan dibawahnya. ubah root dengan namauser yg telah dibuat kemudian ctrl + x kemudian pilih y
-e. ketik ```nano /etc/ssh/sshd_config``` kemudian scroll ke bawah cari ```PasswordAuthentication=no``` kemudian ubah dari no menjadi yes ```PasswordAuthentication=yes``` kemudian ctrl + x dan simpan
-f. restart ssh menggunakan ```/etc/init.d/ssh restart```
-g. silahkan login ke putty menggunakan user yg telah dibuat diatas dan lanjutkan ke langkah instalasi swap dll
+- di halaman dashboard klik open in browser window https://prnt.sc/ZgDK0WXq-46Z di vps yg telah kita buat
+- setelah masuk ke terminal ketik ```sudo su```
+- ketik ```adduser namauser`` kemudian isi password dan skip isian yg lain dengan cara enter. namauser diganti dengan nama anda
+- ketik ```visudo``` kemudian scroll ke bawah dibagian ```root ALL ALL ALL``` copy script tersebut kemudian pastekan dibawahnya. ubah root dengan namauser yg telah dibuat kemudian ctrl + x kemudian pilih y
+- ketik ```nano /etc/ssh/sshd_config``` kemudian scroll ke bawah cari ```PasswordAuthentication=no``` kemudian ubah dari no menjadi yes ```PasswordAuthentication=yes``` kemudian ctrl + x dan simpan
+- restart ssh menggunakan ```/etc/init.d/ssh restart```
+- silahkan login ke putty menggunakan user yg telah dibuat diatas dan lanjutkan ke langkah instalasi swap dll
 
 # add checker to crontab
 ``` */1 * * * * /root/c1.sh 2>&1 | logger -t mycmd ```
