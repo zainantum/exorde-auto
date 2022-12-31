@@ -23,9 +23,12 @@ Konfigurasi VPS
 - ``` conda create --name exorde-env python=3.9 && conda activate exorde-env ``` semua pertanyaan pilih yes
 - ``` pip install -r requirements.txt ```
 - jika requirements sudah terinstall bisa ```exit``` setelah exit harusnya terminal kembali menggunakan root buat exorde-env. jika sudah kembali ke root bisa lanjut menggunakan createScreen.sh untuk menjalankan worker. setelah itu lanjut download c1.sh dan stuck.sh kemudian setting cronjob seperti settingan di bawah
+
+install pstree
+```apt-get install psmisc```
 # add checker to crontab
-``` */1 * * * * /root/c1.sh 2>&1 | logger -t mycmd ```
-``` */5 * * * * /root/stuck.sh 2>&1 | logger -t mycmd ```
+1. ``` */1 * * * * /root/c1.sh 2>&1 | logger -t mycmd ```
+2. ``` */5 * * * * /root/stuck.sh 2>&1 | logger -t mycmd ```
 # check log
 ``` journalctl -u cron.service ```
 
