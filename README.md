@@ -15,16 +15,9 @@ Konfigurasi VPS
 - silahkan login ke putty menggunakan user yg telah dibuat diatas dan lanjutkan ke langkah instalasi swap dll
 3. proses instalasi swap bisa menggunakan script createSwap.sh dengan alokasi disk bisa disesuaikan kebutuhab
 4. setelah itu lanjut install dependensi
-- ```apt install python3 python3-pip git screen
-pip install --upgrade pip``` semua pertanyaan pilih yes
-- ```wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh
-bash Anaconda3-2022.10-Linux-x86_64.sh
-bash``` semua pertanyaan pilih yes
-- ```wget https://github.com/exorde-labs/ExordeModuleCLI/archive/refs/heads/main.zip \
---output-document=ExordeModuleCLI.zip \
-&& unzip ExordeModuleCLI.zip \
-&& rm ExordeModuleCLI.zip \
-&& mv ExordeModuleCLI-main exorde```
+- ```apt install python3 python3-pip git screen && pip install --upgrade pip``` semua pertanyaan pilih yes
+- ```wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh && bash Anaconda3-2022.10-Linux-x86_64.sh && bash``` semua pertanyaan pilih yes
+- ```wget https://github.com/exorde-labs/ExordeModuleCLI/archive/refs/heads/main.zip \ --output-document=ExordeModuleCLI.zip \ && unzip ExordeModuleCLI.zip \ && rm ExordeModuleCLI.zip \ && mv ExordeModuleCLI-main exorde```
 - ``` cp -r exorde exorde1 ``` sampai exorde10
 - ``` cd exorde ```
 - ``` conda create --name exorde-env python=3.9 && conda activate exorde-env ``` semua pertanyaan pilih yes
