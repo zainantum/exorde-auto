@@ -1,10 +1,10 @@
 Konfigurasi VPS
 1. buat vps baru di google dengan cara
-a. create instance
-b. pilih us-west 1 (oregon low co2)
-c. pilih machine configuration tipe E2 dengan konfigurasi E2-Micro 2cpu + 1gb ram
-d. di bagian boot disk pilih ubuntu 22.04 dengan size disk 40gb
-e. create
+- create instance
+- pilih us-west 1 (oregon low co2)
+- pilih machine configuration tipe E2 dengan konfigurasi E2-Micro 2cpu + 1gb ram
+- di bagian boot disk pilih ubuntu 22.04 dengan size disk 40gb
+- create
 2. setelah vps jadi kita lanjut menambahkan user
 a. di halaman dashboard klik open in browser window https://prnt.sc/ZgDK0WXq-46Z di vps yg telah kita buat
 b. setelah masuk ke terminal ketik ```sudo su```
