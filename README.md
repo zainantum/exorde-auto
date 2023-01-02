@@ -3,7 +3,7 @@ Konfigurasi VPS
 - create instance
 - pilih us-west 1 (oregon low co2)
 - pilih machine configuration tipe E2 dengan konfigurasi E2-Micro 2cpu + 1gb ram
-- di bagian boot disk pilih ubuntu 22.04 dengan size disk 40gb
+- di bagian boot disk pilih ubuntu 22.04 dengan size disk 50gb
 - create
 2. setelah vps jadi kita lanjut menambahkan user
 - di halaman dashboard klik open in browser window https://prnt.sc/ZgDK0WXq-46Z di vps yg telah kita buat
