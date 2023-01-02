@@ -15,6 +15,12 @@ do
         screen -r $name -X stuff $'\003'
         screen -r $name -X stuff $'\003'
         screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
         sleep 15
         screen -r $name -X stuff 'python Launcher.py -m 0x80bE97A5580061a647bb04ADaeb8d18fe963ae55 -l 3'`echo -ne '\015'`
     else
