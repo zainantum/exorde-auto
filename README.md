@@ -10,10 +10,10 @@ Konfigurasi VPS
 - setelah masuk ke terminal ketik ```sudo su```
 - ketik ```adduser namauser``` kemudian isi password dan skip isian yg lain dengan cara enter. namauser diganti dengan nama anda
 - ketik ```visudo``` kemudian scroll ke bawah dibagian ```root ALL ALL ALL``` copy script tersebut kemudian pastekan dibawahnya. ubah root dengan namauser yg telah dibuat kemudian ctrl + x kemudian pilih y
-- ketik ```nano /etc/ssh/sshd_config``` kemudian scroll ke bawah cari ```PasswordAuthentication=no``` kemudian ubah dari no menjadi yes ```PasswordAuthentication=yes``` kemudian ctrl + x dan simpan
+- ketik ```nano /etc/ssh/sshd_config``` kemudian scroll ke bawah cari ```PasswordAuthentication no``` kemudian ubah dari no menjadi yes ```PasswordAuthentication yes``` kemudian ctrl + x dan simpan
 - restart ssh menggunakan ```/etc/init.d/ssh restart```
 - silahkan login ke putty menggunakan user yg telah dibuat diatas dan lanjutkan ke langkah instalasi swap dll
-3. proses instalasi swap bisa menggunakan script createSwap.sh dengan alokasi disk bisa disesuaikan kebutuhab
+3. proses instalasi swap bisa menggunakan script swap.sh dengan alokasi disk bisa disesuaikan kebutuhan
 4. setelah itu lanjut install dependensi
 - ```apt install python3 python3-pip git screen && pip install --upgrade pip``` semua pertanyaan pilih yes
 - ```wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh && bash Anaconda3-2022.10-Linux-x86_64.sh && bash``` semua pertanyaan pilih yes
