@@ -32,7 +32,7 @@ sudo apt update && sudo apt install unzip -y
 echo -e "\e[1m\e[32m2. Installing dependencies... \e[0m" && sleep 2
 sudo apt install python3 python3-pip git screen -y && pip install --upgrade pip
 
-wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh && yes | bash Anaconda3-2022.10-Linux-x86_64.sh && yes | bash
+wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh && bash Anaconda3-2022.10-Linux-x86_64.sh -b -u && yes | bash
 
 echo -e "\e[1m\e[32m2. Cloning Exorde file... \e[0m" && sleep 2
 wget https://github.com/exorde-labs/ExordeModuleCLI/archive/refs/heads/main.zip \
