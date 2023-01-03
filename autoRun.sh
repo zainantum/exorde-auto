@@ -6,7 +6,7 @@ echo -e '\e[35mNode :\e[35m' Exorde
 echo -e '\e[35mTelegram :\e[35m' @znntm
 echo -e '\e[35mTwitter :\e[35m' @zainantum
 echo "===================================================================================="
-sleep 1
+sleep 2
 if [ ! $mainAddress ]; then
 	read -p "Enter address for workers: " mainAddress
 	echo 'export mainAddress='$mainAddress >> $HOME/.bash_profile
@@ -18,7 +18,7 @@ echo -e "Your Main Address: \e[1m\e[32m$mainAddress\e[0m"
 echo '================================================='
 sleep 2
 
-echo -e "\e[1m\e[32m1. Create swap... \e[0m" && sleep 1
+echo -e "\e[1m\e[32m1. Create swap... \e[0m" && sleep 2
 fallocate -l 38G /swapfile
 chmod 600 /swapfile
 mkswap /swapfile
@@ -26,15 +26,15 @@ swapon /swapfile
 sudo cp /etc/fstab /etc/fstab.bak
 echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 
-echo -e "\e[1m\e[32m1. Updating packages... \e[0m" && sleep 1
-sudo apt update && sudo apt upgrade -y && sudo apt install unzip -y
+echo -e "\e[1m\e[32m1. Updating packages... \e[0m" && sleep 2
+sudo apt update && sudo apt install unzip -y
 
-echo -e "\e[1m\e[32m2. Installing dependencies... \e[0m" && sleep 1
+echo -e "\e[1m\e[32m2. Installing dependencies... \e[0m" && sleep 2
 sudo apt install python3 python3-pip git screen -y && pip install --upgrade pip
 
 wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh && yes | bash Anaconda3-2022.10-Linux-x86_64.sh && yes | bash
 
-echo -e "\e[1m\e[32m2. Cloning Exorde file... \e[0m" && sleep 1
+echo -e "\e[1m\e[32m2. Cloning Exorde file... \e[0m" && sleep 2
 wget https://github.com/exorde-labs/ExordeModuleCLI/archive/refs/heads/main.zip \
 --output-document=ExordeModuleCLI.zip \
 && unzip ExordeModuleCLI.zip \
@@ -49,7 +49,7 @@ do
         sleep 1
 done
 
-echo -e "\e[1m\e[32m2. Create conda exorde enviroment... \e[0m" && sleep 1
+echo -e "\e[1m\e[32m2. Create conda exorde enviroment... \e[0m" && sleep 2
 
 cd exorde
 conda create --name exorde-env python=3.9 -y
@@ -57,7 +57,7 @@ conda activate exorde-env
 pip install -r -y requirements.txt
 exit
 
-echo -e "\e[1m\e[32m2. Create screen... \e[0m" && sleep 1
+echo -e "\e[1m\e[32m2. Create screen... \e[0m" && sleep 2
 
 array=( "exorde1" "exorde2" "exorde3" "exorde4" "exorde5" "exorde6" "exorde7" "exorde8" "exorde9" "exorde10" )
 for name in "${array[@]}"
