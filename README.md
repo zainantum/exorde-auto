@@ -18,7 +18,7 @@ Konfigurasi VPS
 - ```apt install python3 python3-pip git screen && pip install --upgrade pip``` semua pertanyaan pilih yes
 - ```wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh && bash Anaconda3-2022.10-Linux-x86_64.sh && bash``` semua pertanyaan pilih yes
 - ```wget https://github.com/exorde-labs/ExordeModuleCLI/archive/refs/heads/main.zip \ --output-document=ExordeModuleCLI.zip \ && unzip ExordeModuleCLI.zip \ && rm ExordeModuleCLI.zip \ && mv ExordeModuleCLI-main exorde```
-- ``` cp -r exorde exorde1 ``` sampai exorde10
+- gunakan script copyFile.sh untuk membuat 10 folder exorde
 - ``` cd exorde ```
 - ``` conda create --name exorde-env python=3.9 && conda activate exorde-env ``` semua pertanyaan pilih yes
 - ``` pip install -r requirements.txt ```
