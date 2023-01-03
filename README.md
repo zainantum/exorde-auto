@@ -6,6 +6,7 @@ Konfigurasi VPS
 - di bagian boot disk pilih ubuntu 22.04 dengan size disk 50gb
 - create
 2. setelah vps jadi kita lanjut menambahkan user
+- update dulu apt-get update && apt install unzip
 - di halaman dashboard klik open in browser window https://prnt.sc/ZgDK0WXq-46Z di vps yg telah kita buat
 - setelah masuk ke terminal ketik ```sudo su```
 - ketik ```adduser namauser``` kemudian isi password dan skip isian yg lain dengan cara enter. namauser diganti dengan nama anda
