@@ -3,8 +3,9 @@ echo -e "\e[35m"
 echo "====================================================================================" 
 
 echo -e '\e[35mNode :\e[35m' Exorde
-echo -e '\e[35mTelegram :\e[35m' @znntm
+echo -e '\e[35mTelegram :\e[35m' @imrnmln
 echo -e '\e[35mTwitter :\e[35m' @zainantum
+echo -e '\e[35mDiscord :\e[35m' @imrnmln#7847
 echo "===================================================================================="
 sleep 2
 if [ ! $mainAddress ]; then
