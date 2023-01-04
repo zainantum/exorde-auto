@@ -54,9 +54,9 @@ cd exorde
 source ~/anaconda3/etc/profile.d/conda.sh
 conda create --name exorde-env python=3.9 -y
 conda activate exorde-env
-pip install -r requirements.txt -y
-exit
-
+yes | pip install -r requirements.txt
+conda deactivate
+cd ..
 echo -e "\e[1m\e[32m2. Create screen... \e[0m" && sleep 2
 
 array=( "exorde1" "exorde2" "exorde3" "exorde4" "exorde5" "exorde6" "exorde7" "exorde8" "exorde9" "exorde10" )
