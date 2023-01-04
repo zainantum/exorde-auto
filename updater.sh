@@ -17,15 +17,12 @@ do
         cp -r exorde $name
         sleep 1
 done
-if [ ! $mainAddress ]; then
-	read -p "Enter address for workers: " mainAddress
-	echo 'export mainAddress='$mainAddress >> $HOME/.bash_profile
-fi
 
-if [ ! $maxWorker ]; then
-        read -p "Enter maximum worker do you want: " maxWorker
-        echo 'export maxWorker='$maxWorker >> $HOME/.bash_profile
-fi
+read -p "Enter address for workers: " mainAddress
+echo 'export mainAddress='$mainAddress >> $HOME/.bash_profile
+
+read -p "Enter maximum worker do you want: " maxWorker
+echo 'export maxWorker='$maxWorker >> $HOME/.bash_profile
 
 source $HOME/.bash_profile
 
