@@ -5,6 +5,7 @@ Konfigurasi VPS
 - pilih machine configuration tipe E2 dengan konfigurasi E2-Micro 2cpu + 1gb ram
 - di bagian boot disk pilih ubuntu 22.04 dengan size disk 50gb
 - create
+untuk digital ocean bisa memilih droplet dengan ram 2gb + 1cpu. kalo tidak salah harganya 12$/bulan. silahkan buat sebanyak sisa credit/sisa waktu trial
 2. setelah vps jadi kita lanjut menambahkan user
 - update dulu apt-get update && apt install unzip
 - di halaman dashboard klik open in browser window https://prnt.sc/ZgDK0WXq-46Z di vps yg telah kita buat
