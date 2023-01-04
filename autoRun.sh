@@ -65,13 +65,13 @@ do
         echo "create screen $name"
         screen -dm $name
         sleep 3
-        screen -r $name -X stuff 'cd '${name}' && conda activate exorde-env && python Launcher.py -m '${mainAddress}' -l 3'`echo -ne '\015'`
+        screen -r $name -X stuff 'cd '${name}' && source ~/anaconda3/etc/profile.d/conda.sh && conda activate exorde-env && python Launcher.py -m '${mainAddress}' -l 3'`echo -ne '\015'`
 done
 
-echo -e "\e[1m\e[32m1. Downloading auto restart... \e[0m" && sleep 1
+echo -e "\e[1m\e[32m1. Downloading auto restart... \e[0m" && sleep 2
 wget https://raw.githubusercontent.com/zainantum/checker/main/c1.sh && chmod 777 c1.sh && wget https://raw.githubusercontent.com/zainantum/checker/main/stuck.sh && chmod 777 stuck.sh && wget https://raw.githubusercontent.com/zainantum/checker/main/updater.sh && chmod 777 updater.sh && wget https://raw.githubusercontent.com/zainantum/checker/main/createScreen.sh && chmod 777 createScreen.sh && wget https://raw.githubusercontent.com/zainantum/checker/main/swap.sh && chmod 777 swap.sh && wget https://raw.githubusercontent.com/zainantum/checker/main/copyFile.sh && chmod 777 copyFile.sh
 
-echo -e "\e[1m\e[32m1. Add auto restart to crontab... \e[0m" && sleep 1
+echo -e "\e[1m\e[32m1. Add auto restart to crontab... \e[0m" && sleep 2
 pathFileRestart=$(realpath stuck.sh)
 crontab -l | { cat; echo "*/1 * * * * $pathFileRestart/c1.sh"; } | crontab -
 crontab -l | { cat; echo "*/5 * * * * $pathFileRestart/stuck.sh"; } | crontab -
