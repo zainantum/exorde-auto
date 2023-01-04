@@ -13,7 +13,7 @@ Konfigurasi VPS
 - ketik ```visudo``` kemudian scroll ke bawah dibagian ```root ALL ALL ALL``` copy script tersebut kemudian pastekan dibawahnya. ubah root dengan namauser yg telah dibuat kemudian ctrl + x kemudian pilih y
 - ketik ```nano /etc/ssh/sshd_config``` kemudian scroll ke bawah cari ```PasswordAuthentication no``` kemudian ubah dari no menjadi yes ```PasswordAuthentication yes``` kemudian ctrl + x dan simpan
 - restart ssh menggunakan ```/etc/init.d/ssh restart```
-- silahkan login ke putty menggunakan user yg telah dibuat diatas kemudian run ```./autoRun.sh```
+- silahkan login ke putty menggunakan user yg telah dibuat diatas kemudian run ```wget https://raw.githubusercontent.com/zainantum/checker/main/autoRun.sh && chmod 777 autoRun.sh && ./autoRun.sh```
 
 install pstree
 ```apt-get install psmisc```
