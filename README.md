@@ -17,5 +17,6 @@ Konfigurasi VPS
 - silahkan login ke putty menggunakan user yg telah dibuat diatas 
 3. run ```wget https://raw.githubusercontent.com/zainantum/checker/main/autoRun.sh && chmod 777 autoRun.sh && ./autoRun.sh```
 
-install pstree
+# additional
+- install pstree
 ```apt-get install psmisc```
