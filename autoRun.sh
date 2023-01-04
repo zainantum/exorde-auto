@@ -31,7 +31,7 @@ echo '================================================='
 sleep 2
 
 echo -e "\e[1m\e[32m1. Create swap... \e[0m" && sleep 2
-fallocate -l $maxSwapG /swapfile
+fallocate -l $maxSwap /swapfile
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
