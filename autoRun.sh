@@ -73,8 +73,9 @@ wget https://raw.githubusercontent.com/zainantum/checker/main/c1.sh && chmod 777
 
 echo -e "\e[1m\e[32m1. Add auto restart to crontab... \e[0m" && sleep 2
 pathFileRestart=$(realpath stuck.sh)
-crontab -l | { cat; echo "*/1 * * * * $pathFileRestart/c1.sh"; } | crontab -
-crontab -l | { cat; echo "*/5 * * * * $pathFileRestart/stuck.sh"; } | crontab -
+pathFileRestart1=$(realpath c1.sh)
+crontab -l | { cat; echo "*/1 * * * * $pathFileRestart1"; } | crontab -
+crontab -l | { cat; echo "*/5 * * * * $pathFileRestart"; } | crontab -
 
 echo '=============== DONE ==================='
 echo -e "\e[1m\e[32m1. If auto restart doesnt exists in crontab, please report issue and add manually for now... \e[0m" && sleep 1
