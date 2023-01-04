@@ -12,6 +12,17 @@ if [ ! $mainAddress ]; then
 	read -p "Enter address for workers: " mainAddress
 	echo 'export mainAddress='$mainAddress >> $HOME/.bash_profile
 fi
+
+if [ ! $maxWorker ]; then
+        read -p "Enter maximum worker do you want: " maxWorker
+        echo 'export maxWorker='$maxWorker >> $HOME/.bash_profile
+fi
+
+if [ ! $maxSwap ]; then
+        read -p "Enter swap do you want: " maxSwap
+        echo 'export maxWorker='$maxSwap >> $HOME/.bash_profile
+fi
+
 source $HOME/.bash_profile
 
 echo '================================================='
@@ -20,7 +31,7 @@ echo '================================================='
 sleep 2
 
 echo -e "\e[1m\e[32m1. Create swap... \e[0m" && sleep 2
-fallocate -l 38G /swapfile
+fallocate -l $maxSwapG /swapfile
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
@@ -42,13 +53,14 @@ wget https://github.com/exorde-labs/ExordeModuleCLI/archive/refs/heads/main.zip 
 && rm ExordeModuleCLI.zip \
 && mv ExordeModuleCLI-main exorde
 
-array=( "exorde1" "exorde2" "exorde3" "exorde4" "exorde5" "exorde6" "exorde7" "exorde8" "exorde9" "exorde10" )
-for name in "${array[@]}"
+for (( i=1; i<=$maxWorker; i++ ))
 do
-        echo "copy folder to $name"
-        cp -r exorde $name
-        sleep 1
+   name="exorde"$i
+   echo "copy folder to $name"
+   cp -r exorde $name
+   sleep 1
 done
+
 
 echo -e "\e[1m\e[32m5. Create conda exorde enviroment... \e[0m" && sleep 2
 cd exorde
@@ -60,14 +72,15 @@ conda deactivate
 cd ..
 echo -e "\e[1m\e[32m6. Create screen... \e[0m" && sleep 2
 
-array=( "exorde1" "exorde2" "exorde3" "exorde4" "exorde5" "exorde6" "exorde7" "exorde8" "exorde9" "exorde10" )
-for name in "${array[@]}"
+for (( i=1; i<=$maxWorker; i++ ))
 do
-        echo "create screen $name"
-        screen -dm $name
-        sleep 3
-        screen -r $name -X stuff 'cd '${name}' && source ~/anaconda3/etc/profile.d/conda.sh && conda activate exorde-env && python Launcher.py -m '${mainAddress}' -l 3'`echo -ne '\015'`
+   name="exorde"$i
+   echo "create screen $name"
+   screen -dm $name
+   sleep 2
+   screen -r $name -X stuff 'cd '${name}' && source ~/anaconda3/etc/profile.d/conda.sh && conda activate exorde-env && python Launcher.py -m '${mainAddress}' -l 3'`echo -ne '\015'`
 done
+
 
 echo -e "\e[1m\e[32m7. Downloading auto restart... \e[0m" && sleep 2
 wget https://raw.githubusercontent.com/zainantum/checker/main/c1.sh && chmod 777 c1.sh && wget https://raw.githubusercontent.com/zainantum/checker/main/stuck.sh && chmod 777 stuck.sh && wget https://raw.githubusercontent.com/zainantum/checker/main/updater.sh && chmod 777 updater.sh && wget https://raw.githubusercontent.com/zainantum/checker/main/createScreen.sh && chmod 777 createScreen.sh && wget https://raw.githubusercontent.com/zainantum/checker/main/swap.sh && chmod 777 swap.sh && wget https://raw.githubusercontent.com/zainantum/checker/main/copyFile.sh && chmod 777 copyFile.sh
