@@ -19,11 +19,3 @@ Konfigurasi VPS
 
 install pstree
 ```apt-get install psmisc```
-# add checker to crontab
-1. ``` */1 * * * * /root/c1.sh 2>&1 | logger -t mycmd ```
-2. ``` */5 * * * * /root/stuck.sh 2>&1 | logger -t mycmd ```
-# check log
-``` journalctl -u cron.service ```
-
-# download checker
-``` wget https://raw.githubusercontent.com/zainantum/checker/main/c1.sh && chmod 777 c1.sh && wget https://raw.githubusercontent.com/zainantum/checker/main/stuck.sh && chmod 777 stuck.sh && wget https://raw.githubusercontent.com/zainantum/checker/main/updater.sh && chmod 777 updater.sh && wget https://raw.githubusercontent.com/zainantum/checker/main/createScreen.sh && chmod 777 createScreen.sh && wget https://raw.githubusercontent.com/zainantum/checker/main/swap.sh && chmod 777 swap.sh && wget https://raw.githubusercontent.com/zainantum/checker/main/copyFile.sh && chmod 777 copyFile.sh```
