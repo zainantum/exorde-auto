@@ -53,8 +53,9 @@ echo -e "\e[1m\e[32m2. Create conda exorde enviroment... \e[0m" && sleep 2
 
 cd exorde
 conda create --name exorde-env python=3.9 -y
+source ~/anaconda3/etc/profile.d/conda.sh
 conda activate exorde-env
-pip install -r -y requirements.txt
+pip install -r requirements.txt -y
 exit
 
 echo -e "\e[1m\e[32m2. Create screen... \e[0m" && sleep 2
