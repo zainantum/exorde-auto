@@ -20,7 +20,7 @@ fi
 
 if [ ! $maxSwap ]; then
         read -p "Enter swap do you want with G(exp: 36G): " maxSwap
-        echo 'export maxWorker='$maxSwap >> $HOME/.bash_profile
+        echo 'export maxSwap='$maxSwap >> $HOME/.bash_profile
 fi
 
 source $HOME/.bash_profile
