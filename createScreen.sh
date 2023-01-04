@@ -1,10 +1,17 @@
 #!/bin/bash
-array=( "exorde1" "exorde2" "exorde3" "exorde4" "exorde5" "exorde6" "exorde7" "exorde8" "exorde9" "exorde10" )
-for name in "${array[@]}"
-do
-        echo "create screen $name"
-        screen -dm $name
-        sleep 3
-        screen -r $name -X stuff 'cd '${name}' && source ~/anaconda3/etc/profile.d/conda.sh && conda activate exorde-env && python Launcher.py -m 0x80bE97A5580061a647bb04ADaeb8d18fe963ae55 -l 3'`echo -ne '\015'`
-done
 
+if [ ! $maxWorker ]; then
+        read -p "Enter maximum worker do you want: " maxWorker
+        echo 'export maxWorker='$maxWorker >> $HOME/.bash_profile
+fi
+
+source $HOME/.bash_profile
+
+for (( i=1; i<=$maxWorker; i++ ))
+do
+   name="exorde"$i
+   echo "create screen $name"
+   screen -dm $name
+   sleep 2
+   screen -r $name -X stuff 'cd '${name}' && source ~/anaconda3/etc/profile.d/conda.sh && conda activate exorde-env && python Launcher.py -m '${mainAddress}' -l 3'`echo -ne '\015'`
+done
