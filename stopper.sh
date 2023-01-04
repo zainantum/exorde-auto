@@ -8,5 +8,11 @@ do
     screen -r $name -X stuff $'\003'
     screen -r $name -X stuff $'\003'
     screen -r $name -X stuff $'\003'
+    screen -r $name -X stuff $'\003'
+    screen -r $name -X stuff $'\003'
+    screen -r $name -X stuff $'\003'
+    screen -r $name -X stuff $'\003'
+    screen -r $name -X stuff $'\003'
+    screen -r $name -X stuff $'\003'
 done
 
