@@ -13,17 +13,7 @@ Konfigurasi VPS
 - ketik ```visudo``` kemudian scroll ke bawah dibagian ```root ALL ALL ALL``` copy script tersebut kemudian pastekan dibawahnya. ubah root dengan namauser yg telah dibuat kemudian ctrl + x kemudian pilih y
 - ketik ```nano /etc/ssh/sshd_config``` kemudian scroll ke bawah cari ```PasswordAuthentication no``` kemudian ubah dari no menjadi yes ```PasswordAuthentication yes``` kemudian ctrl + x dan simpan
 - restart ssh menggunakan ```/etc/init.d/ssh restart```
-- silahkan login ke putty menggunakan user yg telah dibuat diatas dan lanjutkan ke langkah instalasi swap dll
-3. proses instalasi swap bisa menggunakan script swap.sh dengan alokasi disk bisa disesuaikan kebutuhan
-4. setelah itu lanjut install dependensi
-- ```apt install python3 python3-pip git screen && pip install --upgrade pip``` semua pertanyaan pilih yes
-- ```wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh && bash Anaconda3-2022.10-Linux-x86_64.sh && bash``` semua pertanyaan pilih yes
-- ```wget https://github.com/exorde-labs/ExordeModuleCLI/archive/refs/heads/main.zip \ --output-document=ExordeModuleCLI.zip \ && unzip ExordeModuleCLI.zip \ && rm ExordeModuleCLI.zip \ && mv ExordeModuleCLI-main exorde```
-- gunakan script copyFile.sh untuk membuat 10 folder exorde
-- ``` cd exorde ```
-- ``` conda create --name exorde-env python=3.9 && conda activate exorde-env ``` semua pertanyaan pilih yes
-- ``` pip install -r requirements.txt ```
-- jika requirements sudah terinstall bisa ```exit``` setelah exit harusnya terminal kembali menggunakan root buat exorde-env. jika sudah kembali ke root bisa lanjut menggunakan createScreen.sh untuk menjalankan worker. setelah itu lanjut download c1.sh dan stuck.sh kemudian setting cronjob seperti settingan di bawah
+- silahkan login ke putty menggunakan user yg telah dibuat diatas kemudian run ```./autoRun.sh```
 
 install pstree
 ```apt-get install psmisc```
