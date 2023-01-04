@@ -1,4 +1,8 @@
 #!/bin/bash
+if [ ! $mainAddress ]; then
+	read -p "Enter address for workers: " mainAddress
+	echo 'export mainAddress='$mainAddress >> $HOME/.bash_profile
+fi
 
 if [ ! $maxWorker ]; then
         read -p "Enter maximum worker do you want: " maxWorker
