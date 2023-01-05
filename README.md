@@ -8,6 +8,8 @@
 5. if you want to update all worker:
 - kill all exorde screen, exclude other project. if you're only run exorde screen you can use pkill screen command
 - run ./updater.sh
+# if you have an error like "strtonum never defined"
+- download c1_alt.sh, stuck_alt.sh and log_alt.sh. Make sure you're using this file in cronjob for auto restart
 # if you have already run worker
 download c1.sh, stuck.sh and updater.sh from this repo. add c1.sh and stuck.sh to cronjob. only run updater.sh if you want to restart every worker. dont forget to change my address with your address
 
