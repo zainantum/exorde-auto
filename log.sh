@@ -5,9 +5,10 @@ for pid in ${pidList[@]};
 do
     name=$(screen -ls | grep $pid | awk '{print $1}' | cut -d. -f 2)
     truncate -s 0 log.txt
-    sleep 2
+    sleep 1
     echo "Log worker $name";
     screen -X -S $name hardcopy log.txt
+    sleep 2
     tail -n20 log.txt
     sleep 2
 done
