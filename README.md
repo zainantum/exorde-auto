@@ -1,3 +1,4 @@
+# this script only work for conda/python. its doesnt work for docker for now
 # if using new vps just run autoRun.sh. this script include auto install python, conda and any library
 run ```wget https://raw.githubusercontent.com/zainantum/checker/main/autoRun.sh && chmod 777 autoRun.sh && ./autoRun.sh```
 # if you have already run worker
