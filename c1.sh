@@ -12,6 +12,6 @@ do
         echo "Worker $name is not working";
         #/usr/bin/screen -SX $pid quit;
 	      echo $name;
-	      screen -r $name -X stuff 'python Launcher.py -m $mainAddress -l 3'`echo -ne '\015'`
+	      screen -r $name -X stuff 'python Launcher.py -m '${mainAddress}' -l 3'`echo -ne '\015'`
     fi
 done
