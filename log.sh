@@ -7,4 +7,5 @@ do
     truncate -s 0 log.txt
     sleep 2
     screen -X -S $name hardcopy log.txt
+    tail -n20 log.txt
 done
