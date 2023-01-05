@@ -8,18 +8,22 @@ echo -e '\e[35mTwitter :\e[35m' @zainantum
 echo -e '\e[35mDiscord :\e[35m' @imrnmln#7847
 echo "===================================================================================="
 sleep 2
+
 if [ ! $mainAddress ]; then
 	read -p "Enter address for workers: " mainAddress
 	echo 'export mainAddress='$mainAddress >> $HOME/.bash_profile
 fi
 
-if [ ! $maxWorker ]; then
-        read -p "Enter maximum worker do you want: " maxWorker
-        echo 'export maxWorker='$maxWorker >> $HOME/.bash_profile
+read -p "Enter maximum worker do you want: " maxWorker
+echo 'export maxWorker='$maxWorker >> $HOME/.bash_profile
+
+if [ ! $makeSwap ]; then
+        read -p "Create swap? y or n " makeSwap
+        echo 'export makeSwap='$makeSwap >> $HOME/.bash_profile
 fi
 
-if [ ! $maxSwap ]; then
-        read -p "Enter swap do you want with G(exp: 36G): " maxSwap
+if [ $makeSwap == "y" ]; then
+        read -p "Enter swap do you want with G(exp: 4G): " maxSwap
         echo 'export maxSwap='$maxSwap >> $HOME/.bash_profile
 fi
 
@@ -32,13 +36,16 @@ echo -e "Swap: \e[1m\e[32m$maxSwap\e[0m"
 echo '================================================='
 sleep 2
 
-echo -e "\e[1m\e[32m1. Create swap... \e[0m" && sleep 2
-fallocate -l $maxSwap /swapfile
-chmod 600 /swapfile
-mkswap /swapfile
-swapon /swapfile
-sudo cp /etc/fstab /etc/fstab.bak
-echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+if [ $makeSwap == "y" ]; then
+	echo -e "\e[1m\e[32m1. Create swap... \e[0m" && sleep 2
+	swapoff -a
+	fallocate -l $maxSwap /swapfile
+	chmod 600 /swapfile
+	mkswap /swapfile
+	swapon /swapfile
+	sudo cp /etc/fstab /etc/fstab.bak
+	echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+fi
 
 echo -e "\e[1m\e[32m2. Updating packages... \e[0m" && sleep 2
 sudo apt update && sudo apt install unzip -y
