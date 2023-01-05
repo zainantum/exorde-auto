@@ -6,6 +6,8 @@ do
     name=$(screen -ls | grep $pid | awk '{print $1}' | cut -d. -f 2)
     truncate -s 0 log.txt
     sleep 2
+    echo "Log worker $name";
     screen -X -S $name hardcopy log.txt
     tail -n20 log.txt
+    sleep 2
 done
