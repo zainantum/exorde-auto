@@ -11,7 +11,7 @@ fi
 
 source $HOME/.bash_profile
 
-for (( i=1; i<=$maxWorker; i++ ))
+for (( i=11; i<=$maxWorker; i++ ))
 do
    name="exorde"$i
    echo "create screen $name"
