@@ -101,5 +101,6 @@ crontab -l | { cat; echo "*/1 * * * * $pathFileRestart1"; } | crontab -
 crontab -l | { cat; echo "*/5 * * * * $pathFileRestart"; } | crontab -
 
 echo '=============== DONE ==================='
+rm -rf Anaconda3-2022.10-Linux-x86_64.sh
 echo -e "\e[1m\e[32m If auto restart doesnt exists in crontab, please report issue and add manually for now... \e[0m" && sleep 1
 
