@@ -2,12 +2,12 @@
 # if using new vps just run autoRun.sh. this script include auto install python, conda and any library
 1. run autoRun.sh
 ```wget https://raw.githubusercontent.com/zainantum/checker/main/autoRun.sh && chmod 777 autoRun.sh && ./autoRun.sh```
-2. after script autoRun.sh complete you can check your worker with screen -ls
-3. to see every worker log, you can use ./log.sh command. it will display log in all worker.
-4. cronjob will restart your worker automatically if your worker not running or stuck. you can check with crontab -e command to make sure c1.sh and stuck.sh is setting up
+2. after script autoRun.sh complete you can check your worker with ```screen -ls```
+3. to see every worker log, you can use ``` ./log.sh ``` command. it will display log in all worker.
+4. cronjob will restart your worker automatically if your worker not running or stuck. you can check with ``` crontab -e ``` command to make sure ```c1.sh``` and ```stuck.sh``` is setting up
 5. if you want to update all worker:
-- kill all exorde screen, exclude other project. if you're only run exorde screen you can use pkill screen command
-- run ./updater.sh
+- kill all exorde screen, exclude other project. if you're only run exorde screen you can use ```pkill screen``` command
+- run ```./updater.sh```
 # if you have an error like "strtonum never defined"
 - download c1_alt.sh, stuck_alt.sh and log_alt.sh. Make sure you're using this file in cronjob for auto restart
 # if you have already run worker
