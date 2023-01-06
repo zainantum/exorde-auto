@@ -10,7 +10,7 @@
 - run ```./updater.sh```
 # if you have an error like "strtonum never defined"
 - download c1_alt.sh, stuck_alt.sh and log_alt.sh. Make sure you're using this file in cronjob for auto restart
-# if you have already run worker
+# if already run worker
 download c1.sh, stuck.sh and updater.sh from this repo. add c1.sh and stuck.sh to cronjob. only run updater.sh if you want to restart every worker. dont forget to change my address with your address
 
 # additional
