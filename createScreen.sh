@@ -4,12 +4,8 @@ if [ ! $mainAddress ]; then
 	echo 'export mainAddress='$mainAddress >> $HOME/.bash_profile
 fi
 
-if [ ! $maxWorker ]; then
-        read -p "Enter maximum worker do you want: " maxWorker
-        echo 'export maxWorker='$maxWorker >> $HOME/.bash_profile
-fi
-
-source $HOME/.bash_profile
+read -p "Enter maximum worker do you want: " maxWorker
+echo 'export maxWorker='$maxWorker >> $HOME/.bash_profile
 
 for (( i=11; i<=$maxWorker; i++ ))
 do
