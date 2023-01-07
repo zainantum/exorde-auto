@@ -25,7 +25,7 @@ echo -e "\e[1m\e[32m1. Downloading auto send log... \e[0m" && sleep 2
 rm -rf sendLog.sh
 rm -rf sendReport.sh
 
-wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sendReport.sh && chmod 777 sendReport.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sendLog.sh && chmod 777 sendLog.sh
+wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sendReport.py && chmod 777 sendReport.py && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sendLog.sh && chmod 777 sendLog.sh
 sleep 2
 pathFileRestart=$(realpath sendLog.sh)
 
