@@ -27,7 +27,7 @@ do
     elif tail -n5 log.txt | grep 'sub routine initialized' || tail -n20 log.txt | grep 'Initialization error Something went' || tail -n20 log.txt | grep 'Read timed out'
     then
         echo "Worker stuck too long. Re-install worker"
-        screen -X -S $name quit
+        kill -9 $pid
         echo "Close $name screen done"
         sleep 2
         screen -dm $name
