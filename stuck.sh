@@ -33,6 +33,16 @@ do
         echo "Re-create screen $name"
         sleep 3
         screen -r $name -X stuff 'cd '${name}' && source ~/anaconda3/etc/profile.d/conda.sh && conda activate exorde-env && python Launcher.py -m 0x80bE97A5580061a647bb04ADaeb8d18fe963ae55 -l 3'`echo -ne '\015'`
+    elif tail -n20 log.txt | grep 'Read timed out'
+    then
+        echo "Worker error timeout. Re-install worker"
+        screen -X -S $name quit
+        echo "Close $name screen done"
+        screen -dm $name
+        echo "Re-create screen $name"
+        sleep 3
+        screen -r $name -X stuff 'cd '${name}' && source ~/anaconda3/etc/profile.d/conda.sh && conda activate exorde-env && python Launcher.py -m 0x80bE97A5580061a647bb04ADaeb8d18fe963ae55 -l 3'`echo -ne '\015'`
+    else
     else
         echo "Worker $name running perfectly";
     fi
