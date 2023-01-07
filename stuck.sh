@@ -34,6 +34,9 @@ do
         echo "Re-create screen $name"
         sleep 3
         screen -r $name -X stuff 'cd '${name}' && source ~/anaconda3/etc/profile.d/conda.sh && conda activate exorde-env && python Launcher.py -m '${mainAddress}' -l 3'`echo -ne '\015'`
+    elif ! pstree $pid | grep python
+    then 
+        screen -r $name -X stuff 'python Launcher.py -m '${mainAddress}' -l 3'`echo -ne '\015'`
     else
         echo "Worker $name running perfectly";
     fi
