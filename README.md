@@ -12,7 +12,7 @@
 - search ```@report_exorde_bot``` and click start. after that check your chat ID in ```https://api.telegram.org/bot5717312084:AAFYl4qrYosNPojHPy6MWZb8W16ab_fR0VI/getUpdates``` please change chat ID in sendReport.py with yours.
 - download ```wget https://raw.githubusercontent.com/zainantum/checker/main/sendLog.sh && wget https://raw.githubusercontent.com/zainantum/checker/main/sendReport.py && chmod 777 sendLog.sh && chmod 777 sendReport.py```
 - ```nano sendReport.py``` change chat ID with yours
-- search your path using ```realpath sendLog.sh```. copy this path and put to cronjob ``` */30 * * * * realpath ``` it will be send a report every 30 minutes. if you want you can change it, ``` 0 * * * * realpath``` to send every hours
+- search your path using ```realpath sendLog.sh```. copy this path and put this script ``` */30 * * * * realpath ``` to cronjob using ```crontab -e``` it will be send a report every 30 minutes. if you want you can change it, ``` 0 * * * * realpath``` to send every hours
 - you can also try this script its work or not with ``` ./sendLog.sh ```
 # if you have an error like "strtonum never defined"
 - download c1_alt.sh, stuck_alt.sh and log_alt.sh. Make sure you're using this file in cronjob for auto restart
