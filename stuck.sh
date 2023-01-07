@@ -24,11 +24,12 @@ do
         screen -r $name -X stuff $'\003'
         sleep 15
         screen -r $name -X stuff 'python Launcher.py -m '${mainAddress}' -l 3'`echo -ne '\015'`
-    elif tail -n5 log.txt | grep 'sub routine initialized'
+    elif tail -n5 log.txt | grep 'sub routine initialized' || tail -n20 log.txt | grep 'Initialization error Something went' || tail -n20 log.txt | grep 'Read timed out'
     then
         echo "Worker stuck too long. Re-install worker"
         screen -X -S $name quit
         echo "Close $name screen done"
+        sleep 2
         screen -dm $name
         echo "Re-create screen $name"
         sleep 3
