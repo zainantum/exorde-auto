@@ -1,4 +1,4 @@
-source $HOME/.bash_profile
+#!/bin/bash
 pidList=$(screen -ls | awk '/[0-9]{3,}\./ {print strtonum($1)}')
 for pid in ${pidList[@]};
 do
