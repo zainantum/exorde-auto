@@ -24,7 +24,7 @@ do
         screen -r $name -X stuff $'\003'
         sleep 15
         screen -r $name -X stuff 'python Launcher.py -m '${mainAddress}' -l 3'`echo -ne '\015'`
-    elif tail -n5 log.txt | grep 'sub routine initialized' || tail -n20 log.txt | grep 'Read timed out'
+    elif tail -n5 log.txt | grep 'sub routine initialized'
     then
         echo "Worker stuck too long. Re-install worker"
         screen -X -S $name quit
