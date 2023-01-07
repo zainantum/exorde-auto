@@ -1,4 +1,5 @@
 #!/bin/bash
+source $HOME/.bash_profile
 pidList=$(screen -ls | awk '/[0-9]{3,}\./ {print strtonum($1)}')
 for pid in ${pidList[@]};
 do
@@ -9,7 +10,7 @@ do
     screen -X -S $name hardcopy log.txt
     sleep 2
     tail -n7 log.txt > log1.txt
-    python3 sendReport.py $name `hostname -s`
+    python3 sendReport.py $name `hostname -s` $chatid
     sleep 2
 done
 
