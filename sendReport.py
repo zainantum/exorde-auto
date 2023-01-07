@@ -19,7 +19,6 @@ def send_to_telegram(message):
 
 
 with open('log1.txt') as f:
-    lines = f.readlines()
+    lines = f.read().replace("\r","").replace("\n","")
 
-send_to_telegram("This is a log from server "+hostname+" worker "+worker)
-send_to_telegram(lines)
+send_to_telegram("This is a log from server "+hostname+" worker "+worker+"\n\n"+lines)
