@@ -26,9 +26,10 @@ rm -rf sendLog.sh
 rm -rf sendReport.sh
 
 wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sendReport.sh && chmod 777 sendReport.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sendLog.sh && chmod 777 sendLog.sh
+sleep 2
 pathFileRestart=$(realpath sendLog.sh)
 
-if [ ! crontab -l | grep -q 'sendLog' ]
+if [[ ! crontab -l | grep -q 'sendLog' ]]
 then
     crontab -l > mycron
     echo "0 * * * * $pathFileRestart" >> mycron
