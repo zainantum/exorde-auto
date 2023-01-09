@@ -31,11 +31,5 @@ download c1.sh, stuck.sh and updater.sh from this repo. add c1.sh and stuck.sh t
 # additional
 - install pstree
 ```apt-get install psmisc```
-# google cloud
-- login to vps google cloud using browser terminal
-- sudo su
-- ``` adduser username ``` and enter all entry
-- after that type ``` visudo ``` and search ``` root ALL ALL ```. copy and change root with username. now should be ``` username ALL ALL ALL``` . CTRL + X and then type y and enter again
-- ``` nano /etc/ssh/sshd_config ``` and scroll down to ``` PasswordAuthentication no ``` and edit no then change to yes. CTRL X type y and enter
-- ``` /etc/init.d/ssh restart ```
-- after that you can login to your vps using username you add
+# add new user to vps
+download and run ```rm -rf addUser.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/addUser.sh && chmod 777 addUser.sh && ./addUser.sh```
