@@ -1,7 +1,9 @@
 import paramiko
 
 
-def switch(num, ip, un, pw):
+def switch(ip, un, pw):
+    print("Choose what you want to do:\n 1. auto-run \n 2. update and reinstall all worker \n 3. install send log \n 4. send log (must be installed send log before)")
+    num = input("Please Enter Your Choice: ")
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.connect(ip, username=un, password=pw)
@@ -83,10 +85,8 @@ def switch(num, ip, un, pw):
         print("Successfully")
         
     
-print("Choose what you want to do:\n 1. auto-run \n 2. update and reinstall all worker \n 3. install send log \n 4. send log (must be installed send log before)")
-choice = input("Please Enter Your Choice: ")
 with open('listIp.txt') as f:
    for line in f:
        data = line.split(";")
        print("Accessing "+str(data[0]))
-       switch(choice,data[0],data[1],data[2])
+       switch(data[0],data[1],data[2])
