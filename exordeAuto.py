@@ -63,8 +63,8 @@ def switch(num, ip, un, pw):
             stdout=stdout.readlines()
             stdin.close()
         else:
-            stdin, stdout, stderr = client.exec_command('rm -rf updaterParam && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/updaterParam.sh && chmod 777 updaterParam.sh')
-            stdin, stdout, stderr = client.exec_command('./sendLogDocker.sh')
+            stdin, stdout, stderr = client.exec_command('rm -rf installReportDockerParam.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/installReportDockerParam.sh && chmod 777 installReportDockerParam.sh')
+            stdin, stdout, stderr = client.exec_command('./installReportDockerParam.sh')
             stdout=stdout.readlines()
             stdin.close()
         print("Successfully")
