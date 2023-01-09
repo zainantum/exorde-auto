@@ -8,7 +8,7 @@
 5. if you want to update all worker:
 - kill all exorde screen, exclude other project. if you're only run exorde screen you can use ```pkill screen``` command
 - run ```./updater.sh```
-# now you can send a log report to your telegram
+# now you can send a screen log report to your telegram
 - search ```@report_exorde_bot``` and click start. after that check your chat ID in ```https://api.telegram.org/bot5717312084:AAFYl4qrYosNPojHPy6MWZb8W16ab_fR0VI/getUpdates``` copy your chat ID and run installReport.sh.
 - download and run the script ```wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/installReport.sh && chmod 777 installReport.sh && ./installReport.sh``` and paste your chat id. this script will send you worker log every hours.
 # if you have an error like "strtonum never defined"
@@ -24,7 +24,7 @@ download c1.sh, stuck.sh and updater.sh from this repo. add c1.sh and stuck.sh t
 4. cronjob will restart your worker automatically if your worker not running or stuck. you can check with ``` crontab -e ``` command to make sure ```stuckDocker.sh``` is setting up
 5. if you want to update all worker:
 - run ```./updaterDocker.sh``` it will delete are existing container and reinstalling container.
-# now you can send a log report to your telegram
+# now you can send a docker log report to your telegram
 - search ```@report_exorde_bot``` and click start. after that check your chat ID in ```https://api.telegram.org/bot5717312084:AAFYl4qrYosNPojHPy6MWZb8W16ab_fR0VI/getUpdates``` copy your chat ID and run installReportDocker.sh.
 - download and run the script ```rm -rf installReportDocker* && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/installReportDocker.sh && chmod 777 installReportDocker.sh && ./installReportDocker.sh``` and paste your chat id. this script will send you worker log every hours.
 
