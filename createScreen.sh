@@ -4,10 +4,11 @@ if [ ! $mainAddress ]; then
 	echo 'export mainAddress='$mainAddress >> $HOME/.bash_profile
 fi
 
+read -p "Enter minimum worker do you want: " minWorker
 read -p "Enter maximum worker do you want: " maxWorker
-echo 'export maxWorker='$maxWorker >> $HOME/.bash_profile
 
-for (( i=11; i<=$maxWorker; i++ ))
+
+for (( i=$minWorker; i<=$maxWorker; i++ ))
 do
    name="exorde"$i
    echo "create screen $name"
