@@ -80,4 +80,18 @@ do
    sleep 1
 done
 
+echo -e "\e[1m\e[32m3. Downloading auto restart and report... \e[0m" && sleep 2
+wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/installReportDocker.sh && chmod 777 installReportDocker.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sendLogDocker.sh && chmod 777 sendLogDocker.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sendReport.py && chmod 777 sendReport.py && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/stuckDocker.sh && chmod 777 stuckDocker.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/updaterDocker.sh && chmod 777 updaterDocker.sh
 
+echo -e "\e[1m\e[32m4. Add auto restart to cronjob... \e[0m" && sleep 2
+pathFileRestart=$(realpath stuckDocker.sh)
+if ! crontab -l | grep -q 'stuckDocker';
+then
+    echo "Adding auto restart script to cronjob"
+    crontab -l > mycron
+    echo "*/5 * * * * $pathFileRestart" >> mycron
+    crontab mycron
+    rm mycron
+fi
+echo '=============== DONE ==================='
+echo -e "\e[1m\e[32m If auto restart doesnt exists in crontab, please report issue and add manually for now... \e[0m" && sleep 1
