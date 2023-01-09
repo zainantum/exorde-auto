@@ -6,6 +6,7 @@ do
     truncate -s 0 log.txt
     docker logs $pid >> log.txt
     sleep 1
-    tail -n7 log.txt > log.txt
+    echo "Log worker $pid"
+    tail -n7 log.txt
     sleep 2
 done
