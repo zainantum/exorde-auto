@@ -46,11 +46,13 @@ def switch(ip, un, pw):
             stdin, stdout, stderr = client.exec_command('rm -rf updaterParam.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/updaterParam.sh && chmod 777 updaterParam.sh')
             stdin, stdout, stderr = client.exec_command("./updaterParam.sh")
             stdout=stdout.readlines()
+            print(stdout)
             stdin.close()
         else:
             stdin, stdout, stderr = client.exec_command('rm -rf updaterDockerParam.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/updaterDockerParam.sh && chmod 777 updaterDockerParam.sh')
             stdin, stdout, stderr = client.exec_command("./updaterDockerParam.sh")
             stdout=stdout.readlines()
+            print(stdout)
             stdin.close()
         print("Successfully")
     elif num == "3":
@@ -63,11 +65,13 @@ def switch(ip, un, pw):
             stdin, stdout, stderr = client.exec_command('rm -rf installReportParam* && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/installReportParam.sh && chmod 777 installReportParam.sh')
             stdin, stdout, stderr = client.exec_command('./installReportParam.sh')
             stdout=stdout.readlines()
+            print(stdout)
             stdin.close()
         else:
             stdin, stdout, stderr = client.exec_command('rm -rf installReportDockerParam.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/installReportDockerParam.sh && chmod 777 installReportDockerParam.sh')
             stdin, stdout, stderr = client.exec_command('./installReportDockerParam.sh')
             stdout=stdout.readlines()
+            print(stdout)
             stdin.close()
         print("Successfully")
     elif num == "4":
