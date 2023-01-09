@@ -40,7 +40,7 @@ download c1.sh, stuck.sh and updater.sh from this repo. add c1.sh and stuck.sh t
 - you can run this script in local computer or vps only because this script will update every script in all ip vps list
 - download ```wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/listIp.txt``` or create listIp.txt
 - edit listIp.txt and input your all vps ip, username and password with this format 1.2.3.444;username;password; -> example
-12.11.34.11;root;blabla;
+12.11.34.11;root;blabla;\n
 12.11.34.11;root;blabla;
 12.11.34.11;root;blabla;
 12.11.34.11;root;blabla;
