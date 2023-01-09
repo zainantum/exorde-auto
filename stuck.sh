@@ -33,6 +33,8 @@ do
         screen -dm $name
         echo "Re-create screen $name"
         sleep 1
+        screen -r $name -X stuff 'cd '${name}''`echo -ne '\015'` 
+        sleep 2
         screen -r $name -X stuff 'source ~/anaconda3/etc/profile.d/conda.sh'`echo -ne '\015'` 
         sleep 5
         screen -r $name -X stuff 'cd '${name}' && conda activate exorde-env && python Launcher.py -m '${mainAddress}' -l 3'`echo -ne '\015'`
