@@ -31,5 +31,7 @@ download c1.sh, stuck.sh and updater.sh from this repo. add c1.sh and stuck.sh t
 # additional
 - install pstree
 ```apt-get install psmisc```
+
 # add new user to vps
-download and run ```rm -rf addUser.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/addUser.sh && chmod 777 addUser.sh && ./addUser.sh```
+- download and run ```rm -rf addUser.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/addUser.sh && chmod 777 addUser.sh && ./addUser.sh```
+- if you are using google cloud. access your terminal using this https://prnt.sc/4GUMySlIIGhh after that you can run above script
