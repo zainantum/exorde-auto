@@ -88,5 +88,5 @@ choice = input("Please Enter Your Choice: ")
 with open('listIp.txt') as f:
    for line in f:
        data = line.split(";")
-       print(data)
+       print("Accessing "+str(data[0]))
        switch(choice,data[0],data[1],data[2])
