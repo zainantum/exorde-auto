@@ -35,3 +35,16 @@ download c1.sh, stuck.sh and updater.sh from this repo. add c1.sh and stuck.sh t
 # add new user to vps
 - download and run ```rm -rf addUser.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/addUser.sh && chmod 777 addUser.sh && ./addUser.sh```
 - if you are using google cloud. access your terminal using this https://prnt.sc/4GUMySlIIGhh after that you can run above script
+
+# update file on all vps at once
+- you can run this script in local computer or vps only because this script will update every script in all ip vps list
+- download ```wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/listIp.txt``` or create listIp.txt
+- edit listIp.txt and input your all vps ip, username and password with this format 1.2.3.444;username;password; -> example
+12.11.34.11;root;blabla;
+12.11.34.11;root;blabla;
+12.11.34.11;root;blabla;
+12.11.34.11;root;blabla;
+etc
+- ```pip install paramiko```
+- download and run ```wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/exordeUpdaterScript.py && chmod 777 exordeUpdaterScript.py```
+- run ```python3 exordeUpdaterScript.py``` then input file name to update
