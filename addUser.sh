@@ -1,4 +1,5 @@
 #!/bin/bash
+echo '================================================='
 echo -e "Add new user"
 echo '================================================='
 read -p "Enter new username: " username
@@ -13,3 +14,4 @@ sed -i -e "s|^PasswordAuthentication no|PasswordAuthentication yes|" /etc/ssh/ss
 /etc/init.d/ssh restart
 echo '================================================='
 echo -e "Successfull. You can try to login using new user now"
+echo '================================================='
