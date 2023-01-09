@@ -29,7 +29,6 @@ do
         echo "Worker stuck too long. Re-install worker"
         kill -9 $pid
         sleep 5
-        screen -wipe
         echo "Close $name screen done"
         screen -dm $name
         sleep 2
