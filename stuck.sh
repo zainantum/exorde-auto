@@ -28,12 +28,13 @@ do
     then
         echo "Worker stuck too long. Re-install worker"
         kill -9 $pid
+        screen -wipe
         echo "Close $name screen done"
-        sleep 2
         screen -dm $name
         echo "Re-create screen $name"
-        sleep 3
-        screen -r $name -X stuff 'cd '${name}' && source ~/anaconda3/etc/profile.d/conda.sh && conda activate exorde-env && python Launcher.py -m '${mainAddress}' -l 3'`echo -ne '\015'`
+        sleep 1
+        screen -r $name -X stuff 'source ~/anaconda3/etc/profile.d/conda.sh'`echo -ne '\015'` 
+        screen -r $name -X stuff 'cd '${name}' && conda activate exorde-env && python Launcher.py -m '${mainAddress}' -l 3'`echo -ne '\015'`
     elif ! pstree $pid | grep python
     then 
         screen -r $name -X stuff 'python Launcher.py -m '${mainAddress}' -l 3'`echo -ne '\015'`
