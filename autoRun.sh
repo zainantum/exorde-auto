@@ -96,11 +96,13 @@ wget https://raw.githubusercontent.com/zainantum/checker/main/log.sh && chmod 77
 
 echo -e "\e[1m\e[32m8. Add auto restart to crontab... \e[0m" && sleep 2
 pathFileRestart=$(realpath stuck.sh)
+pathFileRestart1=$(realpath c1.sh)
 if ! crontab -l | grep -q 'stuck';
 then
     echo "Add script to cronjob"
     crontab -l > mycron
     echo "*/5 * * * * $pathFileRestart" >> mycron
+    echo "*/1 * * * * $pathFileRestart1" >> mycron
     crontab mycron
     rm mycron
 fi
