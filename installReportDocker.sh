@@ -29,7 +29,7 @@ wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sendReport.py 
 sleep 2
 pathFileRestart=$(realpath sendLogDocker.sh)
 
-if ! crontab -l | grep -q 'sendLog';
+if ! crontab -l | grep -q 'sendLogDocker';
 then
     echo "Add script to cronjob"
     crontab -l > mycron
