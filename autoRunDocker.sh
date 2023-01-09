@@ -81,7 +81,7 @@ do
 done
 
 echo -e "\e[1m\e[32m3. Downloading auto restart and report... \e[0m" && sleep 2
-wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/installReportDocker.sh && chmod 777 installReportDocker.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sendLogDocker.sh && chmod 777 sendLogDocker.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sendReport.py && chmod 777 sendReport.py && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/stuckDocker.sh && chmod 777 stuckDocker.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/updaterDocker.sh && chmod 777 updaterDocker.sh
+wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/installReportDocker.sh && chmod 777 installReportDocker.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sendLogDocker.sh && chmod 777 sendLogDocker.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sendReport.py && chmod 777 sendReport.py && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/stuckDocker.sh && chmod 777 stuckDocker.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/updaterDocker.sh && chmod 777 updaterDocker.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/logDocker.sh && chmod 777 logDocker.sh
 
 echo -e "\e[1m\e[32m4. Add auto restart to cronjob... \e[0m" && sleep 2
 pathFileRestart=$(realpath stuckDocker.sh)
