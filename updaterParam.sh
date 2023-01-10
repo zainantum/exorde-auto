@@ -1,4 +1,5 @@
 rm -rf exorde*
+rm -rf ExordeModule*
 rm -rf c1.sh*
 rm -rf stuck.sh*
 rm -rf copyFile.sh*
