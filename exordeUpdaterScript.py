@@ -37,9 +37,9 @@ print("Choose what you want to do:\n 1. Execute script \n 2. Update and execute 
 ch = input("Please Enter Your Choice: ")   
 if ch == "1":
             cha = input("Please Enter Command: ")   
-            chb = input("Looping this command? if yes input max looping, if no input 0 ")
+            chb = input("Looping this command? if yes input max looping, if no input 0: ")
 elif ch == "2":
-            cha = input("Please Enter Command Do You Want to Update: ")
+            cha = input("Please Enter Script Do You Want to Update (exp stuck.sh): ")
             chb = input("run script? y or n ")
 with open('listIp.txt') as f:
    for line in f:
