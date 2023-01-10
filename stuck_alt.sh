@@ -1,5 +1,5 @@
 source $HOME/.bash_profile
-for (( i=1; i<=10; i++ ))
+for (( i=1; i<=$maxWorker; i++ ))
 do
    name="exorde"$i
    pid=$(ps aux | grep -w $name | grep -v grep | awk {'print $2'})
