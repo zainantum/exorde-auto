@@ -22,14 +22,17 @@ echo -e "Your Chat ID: \e[1m\e[32m$chatid\e[0m"
 echo '================================================='
 sleep 2
 echo -e "\e[1m\e[32m1. Downloading auto send log... \e[0m" && sleep 2
-rm -rf sendLogDocker.sh
-rm -rf sendReport.sh
+rm -rf sendLogDocker*
+rm -rf sendReport*
 
 wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sendReport.py && chmod 777 sendReport.py && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sendLogDocker.sh && chmod 777 sendLogDocker.sh
 sleep 2
+pathnow=$(pwd)
+sed -i 's+pathreplace+'${pathnow}'+g' sendLogDocker.sh
+sed -i 's+pathreplace+'${pathnow}'+g' sendReport.py
 pathFileRestart=$(realpath sendLogDocker.sh)
 
-if ! crontab -l | grep -q 'sendLogDocker';
+if ! crontab -l | grep -q $pathFileRestart;
 then
     echo "Add script to cronjob"
     crontab -l > mycron
