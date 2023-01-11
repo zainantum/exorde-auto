@@ -22,16 +22,16 @@ echo -e "Your Chat ID: \e[1m\e[32m$chatid\e[0m"
 echo '================================================='
 sleep 2
 echo -e "\e[1m\e[32m1. Downloading auto send log... \e[0m" && sleep 2
-cd /
-cd root
-rm -rf sendLog.sh
-rm -rf sendReport.sh
+
+rm -rf /root/sendLog.sh
+rm -rf /root/sendReport.sh
 
 wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sendReport.py && chmod 777 sendReport.py && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sendLog.sh && chmod 777 sendLog.sh
-truncate -s 0 log.txt && chmod 777 log.txt
-truncate -s 0 log1.txt && chmod 777 log1.txt
+mv sendReport.py /root
+mv sendLog.sh /root
+truncate -s 0 /root/log.txt && chmod 777 /root/log.txt
+truncate -s 0 /root/log1.txt && chmod 777 /root/log1.txt
 sleep 2
-pathFileRestart=$(realpath sendLog.sh)
 
 if ! crontab -l | grep -q pathFileRestart;
 then
