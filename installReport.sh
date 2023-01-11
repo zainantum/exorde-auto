@@ -29,11 +29,12 @@ rm -rf sendReport*
 wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sendReport.py && chmod 777 sendReport.py && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sendLog.sh && chmod 777 sendLog.sh
 
 sleep 2
-pathNow=$(realpath $(dirname $0))
-echo pathNow
-sed -i -e "s|^sendReport.py|${pathNow}/sendReport.py|" sendLog.sh
+pathnow=$(pwd)
+echo $pathnow
+sed -i 's+pathreplace+'${pathnow}'+g' sendLog.sh
+sed -i 's+pathreplace+'${pathnow}'+g' sendReport.py
 pathFileRestart=$(realpath sendLog.sh)
-if ! crontab -l | grep -q pathFileRestart;
+if ! crontab -l | grep -q $pathFileRestart;
 then
     echo "Add script to cronjob"
     crontab -l > mycron
