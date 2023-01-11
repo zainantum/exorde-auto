@@ -10,7 +10,7 @@ do
     screen -X -S $name hardcopy log.txt
     sleep 2
     tail -n7 log.txt > log1.txt
-    python3 sendReport.py $name `hostname -s` $chatid
+    python3 pathreplace/sendReport.py $name `hostname -s` $chatid
     sleep 2
 done
 
