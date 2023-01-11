@@ -9,7 +9,7 @@ do
     echo "Log worker $name";
     screen -X -S $name hardcopy pathreplace/log.txt
     sleep 2
-    tail -n7 pathreplace/log.txt > pathreplace/log1.txt
+    tail -n10 pathreplace/log.txt > pathreplace/log1.txt
     python3 pathreplace/sendReport.py $name `hostname -s` $chatid
     sleep 2
 done
