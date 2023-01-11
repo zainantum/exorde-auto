@@ -23,16 +23,15 @@ echo '================================================='
 sleep 2
 echo -e "\e[1m\e[32m1. Downloading auto send log... \e[0m" && sleep 2
 
-rm -rf /root/sendLog.sh
-rm -rf /root/sendReport.sh
+rm -rf sendLog.*
+rm -rf sendReport.*
 
 wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sendReport.py && chmod 777 sendReport.py && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sendLog.sh && chmod 777 sendLog.sh
-mv sendReport.py /root
-mv sendLog.sh /root
-truncate -s 0 /root/log.txt && chmod 777 /root/log.txt
-truncate -s 0 /root/log1.txt && chmod 777 /root/log1.txt
-sleep 2
 
+sleep 2
+pathNow=$(realpath $(dirname $0))
+sed -i -e "s|^sendReport.py|${pathNow}/sendReport.py|" sendLog.sh
+pathFileRestart=$(realpath sendLog.sh)
 if ! crontab -l | grep -q pathFileRestart;
 then
     echo "Add script to cronjob"
