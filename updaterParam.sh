@@ -15,13 +15,13 @@ wget https://github.com/exorde-labs/ExordeModuleCLI/archive/refs/heads/main.zip 
 --output-document=ExordeModuleCLI.zip \
 && unzip ExordeModuleCLI.zip \
 && rm ExordeModuleCLI.zip \
-&& mv ExordeModuleCLI-main exorde
+&& mv ExordeModuleCLI-main exordeparam
 
 for (( i=1; i<=$maxWorker; i++ ))
 do
    name="exorde"$i
    echo "copy folder to $name"
-   cp -r exorde $name
+   cp -r exordeparam $name
    sleep 1
 done
 
