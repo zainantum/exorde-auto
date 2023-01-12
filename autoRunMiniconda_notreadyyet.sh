@@ -87,7 +87,7 @@ do
    echo "create screen $name"
    screen -dm $name
    sleep 2
-   screen -r $name -X stuff 'cd '${name}' && source ~/anaconda3/etc/profile.d/conda.sh && conda activate exorde-env && python Launcher.py -m '${mainAddress}' -l 3'`echo -ne '\015'`
+   screen -r $name -X stuff 'cd '${name}' && source ~/miniconda3/etc/profile.d/conda.sh && conda activate exorde-env && python Launcher.py -m '${mainAddress}' -l 3'`echo -ne '\015'`
 done
 
 
