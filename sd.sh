@@ -5,8 +5,6 @@ do
   if docker logs $pid -t --tail=1 | grep "Init Version Check";
   then 
       echo "Worker $pid stuck. Restarting worker";
-      docker stop $pid
-      sleep 5
-      docker start $pid
+      docker stop $pid && docker start $pid
   fi
 done
