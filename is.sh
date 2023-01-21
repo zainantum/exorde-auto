@@ -5,7 +5,7 @@ if ! crontab -l | grep -q 'stuck1.sh';
 then
     echo "Adding auto restart script to cronjob"
     crontab -l > mycron
-    echo "*/10 * * * * $pathFileRestart" >> mycron
+    echo "*/30 * * * * $pathFileRestart" >> mycron
     crontab mycron
     rm mycron
 fi
