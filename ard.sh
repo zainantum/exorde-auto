@@ -94,4 +94,3 @@ then
     rm mycron
 fi
 echo '=============== DONE ==================='
-echo -e "\e[1m\e[32m If auto restart doesnt exists in crontab, please report issue and add manually for now... \e[0m" && sleep 1
