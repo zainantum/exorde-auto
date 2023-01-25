@@ -107,5 +107,5 @@ then
     rm mycron
 fi
 echo '=============== DONE ==================='
-rm -rf Anaconda3-2022.10-Linux-x86_64.sh
+rm -rf Miniconda3*
 echo -e "\e[1m\e[32m If auto restart doesnt exists in crontab, please report issue and add manually for now... \e[0m" && sleep 1
