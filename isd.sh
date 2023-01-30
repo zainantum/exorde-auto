@@ -6,7 +6,7 @@ if ! crontab -l | grep -q 'sd.sh';
 then
     echo "Adding auto restart script to cronjob"
     crontab -l > mycron
-    echo "*/10 * * * * $pathFileRestart" >> mycron
+    echo "*/15 * * * * $pathFileRestart" >> mycron
     crontab mycron
     rm mycron
 fi
