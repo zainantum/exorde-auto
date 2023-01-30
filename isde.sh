@@ -5,7 +5,7 @@ if ! crontab -l | grep -q 'sde.sh';
 then
     echo "Adding auto restart script to cronjob"
     crontab -l > mycron
-    echo "*/30 * * * * $pathFileRestart" >> mycron
+    echo "*/5 * * * * $pathFileRestart" >> mycron
     crontab mycron
     rm mycron
 fi
