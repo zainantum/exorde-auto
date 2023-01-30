@@ -28,6 +28,8 @@ download c1.sh, stuck.sh and updater.sh from this repo. add c1.sh and stuck.sh t
 - search ```@report_exorde_bot``` and click start. after that check your chat ID in ```https://api.telegram.org/bot5717312084:AAFYl4qrYosNPojHPy6MWZb8W16ab_fR0VI/getUpdates``` copy your chat ID and run installReportDocker.sh.
 - download and run the script ```rm -rf installReportDocker* && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/installReportDocker.sh && chmod 777 installReportDocker.sh && ./installReportDocker.sh``` and paste your chat id. this script will send you worker log every hours.
 
+# auto restart docker if docker container exited
+``` wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/isde.sh && chmod +x isde.sh && bash isde.sh ```
 # additional
 - install pstree
 ```apt-get install psmisc```
