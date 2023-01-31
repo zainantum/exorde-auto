@@ -101,7 +101,7 @@ if ! crontab -l | grep -q 'stuck';
 then
     echo "Add script to cronjob"
     crontab -l > mycron
-    echo "*/5 * * * * $pathFileRestart" >> mycron
+    echo "*/15 * * * * $pathFileRestart" >> mycron
     echo "*/1 * * * * $pathFileRestart1" >> mycron
     crontab mycron
     rm mycron
