@@ -60,14 +60,20 @@ done
 
 echo -e "\e[1m\e[32m3. Downloading auto restart and report... \e[0m" && sleep 2
 wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/installReportDocker.sh && chmod 777 installReportDocker.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sendLogDocker.sh && chmod 777 sendLogDocker.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sendReport.py && chmod 777 sendReport.py && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/stuckDocker.sh && chmod 777 stuckDocker.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/updaterDocker.sh && chmod 777 updaterDocker.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/logDocker.sh && chmod 777 logDocker.sh
+wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sd.sh && chmod +x sd.sh
+wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sde.sh && chmod +x sde.sh
 
 echo -e "\e[1m\e[32m4. Add auto restart to cronjob... \e[0m" && sleep 2
 pathFileRestart=$(realpath stuckDocker.sh)
+pathFileRestart1=$(realpath sd.sh)
+pathFileRestart2=$(realpath sde.sh)
 if ! crontab -l | grep -q 'stuckDocker';
 then
     echo "Adding auto restart script to cronjob"
     crontab -l > mycron
-    echo "*/5 * * * * $pathFileRestart" >> mycron
+    echo "*/15 * * * * $pathFileRestart" >> mycron
+    echo "*/15 * * * * $pathFileRestart1" >> mycron
+    echo "*/5 * * * * $pathFileRestart2" >> mycron
     crontab mycron
     rm mycron
 fi
