@@ -11,8 +11,11 @@ echo 'export maxLog='$maxLog >> $HOME/.bash_profile
 source $HOME/.bash_profile
 
 echo "Stop and delete all exists docker container"
-docker stop $(docker ps -qf "name=^exorde")
-docker rm $(docker ps -a -qf "name=^exorde")
+docker stop $(docker ps -qf "name=^exorde") && docker rm $(docker ps -a -qf "name=^exorde")
+sleep 2
+docker stop $(docker ps -qf "name=^exorde") && docker rm $(docker ps -a -qf "name=^exorde")
+sleep 2
+docker stop $(docker ps -qf "name=^exorde") && docker rm $(docker ps -a -qf "name=^exorde")
 
 echo "Re-create docker container"
 
