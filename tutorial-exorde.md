@@ -13,3 +13,4 @@ Untuk menjalankan Testnet Exorde ada 2 pilihan yaitu menggunakan conda atau dock
 3. Untuk mengecek log dari semua worker cukup jalankan perintah ``` bash logDocker.sh ``` maka log akan tercetak satu persatu
 4. Proses instalasi di atas sudah termasuk dengan auto restart. jadi teman-teman tidak perlu melakukan restart manual jika ada error.
 5. Jika ada update dari tim dev, silahkan jalankan perintah ``` bash updaterDocker.sh ```
+6. Jika ingin menambah worker baru jalankan ```bash createWorkerDocker.sh``` kemudian minimum diisi dengan n+1 dari jumlah worker yg sudah ada dan maksimum worker diisi sesuai keinginan. Misal sudah ada 9 worker dan ingin menambah 1 worker lagi, berarti minimum worker dan maksimum worker sama" diisi dengan 10.
