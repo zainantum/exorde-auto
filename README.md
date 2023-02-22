@@ -14,7 +14,7 @@
 # if you have an error like "strtonum never defined"
 - download c1_alt.sh, stuck_alt.sh and log_alt.sh. Make sure you're using this file in cronjob for auto restart
 # if already run worker using conda but didnt use autoRun.sh for installer
-``` rm -rf isc.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/isc.sh && chmod +x isc.sh && ./isc.sh``
+``` rm -rf isc.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/isc.sh && chmod +x isc.sh && ./isc.sh ```
 
 # 2. Exorde Testnet using docker
 1. run autoRunDocker.sh
