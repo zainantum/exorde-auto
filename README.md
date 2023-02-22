@@ -30,8 +30,6 @@ download c1.sh, stuck.sh and updater.sh from this repo. add c1.sh and stuck.sh t
 #if you already install worker but not using auto run, you can install auto restart using this script
 wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/isd.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/isde.sh && chmod +x *.sh && bash isd.sh && bash isde.sh
 
-# auto restart docker if docker container exited
-``` wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/isde.sh && chmod +x isde.sh && bash isde.sh ```
 # additional
 - install pstree
 ```apt-get install psmisc```
