@@ -13,8 +13,8 @@
 - download and run the script ```wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/installReport.sh && chmod 777 installReport.sh && ./installReport.sh``` and paste your chat id. this script will send you worker log every hours.
 # if you have an error like "strtonum never defined"
 - download c1_alt.sh, stuck_alt.sh and log_alt.sh. Make sure you're using this file in cronjob for auto restart
-# if already run worker
-download c1.sh, stuck.sh and updater.sh from this repo. add c1.sh and stuck.sh to cronjob. only run updater.sh if you want to restart every worker. dont forget to change my address with your address
+# if already run worker using conda but didnt use autoRun.sh for installer
+https://raw.githubusercontent.com/zainantum/exorde-auto/main/isc.sh
 
 # 2. Exorde Testnet using docker
 1. run autoRunDocker.sh
@@ -28,7 +28,7 @@ download c1.sh, stuck.sh and updater.sh from this repo. add c1.sh and stuck.sh t
 - search ```@report_exorde_bot``` and click start. after that check your chat ID with command ```/chatid```
 - download and run the script ```rm -rf installReportDocker* && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/installReportDocker.sh && chmod 777 installReportDocker.sh && ./installReportDocker.sh``` and paste your chat id. this script will send you worker log every hours.
 
-# if you already install worker but not using auto run, you can install auto restart using this script
+# if you already install worker but not using auto run docker, you can install auto restart using this script
 ``wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/isd.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/isde.sh && chmod +x *.sh && bash isd.sh && bash isde.sh``
 
 # additional
