@@ -10,6 +10,32 @@ do
     if tail -n100 log.txt | grep 'Not registered'
     then
         echo "Restart worker $name. Worker Stuck";
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        screen -r $name -X stuff $'\003'
+        sleep 15
+        screen -r $name -X stuff 'python Launcher.py -m '${mainAddress}' -l 3'`echo -ne '\015'`
     else
         echo "Worker $name running perfectly";
     fi
