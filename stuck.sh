@@ -7,7 +7,7 @@ do
     truncate -s 0 log.txt
     sleep 5
     screen -X -S $name hardcopy log.txt
-    if tail -n10 log.txt | grep 'Initialization error Something went' || tail -n5 log.txt | grep 'Safety Sleep' || tail -n5 log.txt | grep 'Init Version Check' || tail -n5 log.txt | grep 'stakeChecking' || tail -n5 log.txt | grep 'Could not read ConfigRegistry' || tail -n5 log.txt | grep 'Network seems to have stopped block production'   
+    if tail -n10 log.txt | grep 'Initialization error Something went' || tail -n5 log.txt | grep 'Safety Sleep' || tail -n5 log.txt | grep 'Init Version Check' || tail -n5 log.txt | grep 'stakeChecking' || tail -n5 log.txt | grep 'Could not read ConfigRegistry' || tail -n5 log.txt | grep 'Network seems to have stopped block production' || tail -n10 log.txt | grep 'Not registered'   
     then
         echo "Restart worker $name. Worker Stuck";
         screen -r $name -X stuff $'\003'
