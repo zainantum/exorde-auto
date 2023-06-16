@@ -62,3 +62,16 @@ do
    docker run -d --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $mainAddress
    sleep 1
 done
+
+echo -e "\e[1m\e[32m3. Add auto re-create container to cronjob... \e[0m" && sleep 2
+rm -rf checkDisk* && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/checkDisk.sh && chmod +x *
+pathFileRestart=$(realpath checkDisk.sh)
+if ! crontab -l | grep -q 'checkDisk';
+then
+    echo "Adding auto re-create container if space disk less than 300MB to cronjob"
+    crontab -l > mycron
+    echo "*/10 * * * * $pathFileRestart" >> mycron
+    crontab mycron
+    rm mycron
+fi
+echo '=============== DONE ==================='
