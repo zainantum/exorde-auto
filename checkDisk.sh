@@ -12,7 +12,7 @@ else
     docker rm -f $(docker ps -a -qf "name=^exorde")
     sleep 5
     echo "installing new worker by bash profile variable"
-    for (( i=1; i<=2; i++ ))
+    for (( i=1; i<=$maxWorker; i++ ))
     do
         name="exorde"$i
         echo "Create container $name"
