@@ -12,11 +12,11 @@ else
     docker rm -f $(docker ps -a -qf "name=^exorde")
     sleep 5
     echo "installing new worker by bash profile variable"
-    for (( i=1; i<=10; i++ ))
+    for (( i=1; i<=2; i++ ))
     do
         name="exorde"$i
         echo "Create container $name"
-        docker run -d --restart unless-stopped --pull always --name $name --network=container:vpn --log-opt max-size=5m --log-opt max-file=5 exordelabs/exorde-cli -m 0x80bE97A5580061a647bb04ADaeb8d18fe963ae55 -l 0
+        docker run -d --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $mainAddress
         sleep 1
     done
 fi
