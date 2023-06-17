@@ -60,7 +60,7 @@ for (( i=1; i<=$maxWorker; i++ ))
 do
    name="exorde"$i
    echo "copy container $name"
-   docker run -d --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $mainAddress
+   docker run -d --cpus="2" --memory=8g --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $mainAddress
    sleep 1
 done
 
