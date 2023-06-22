@@ -8,8 +8,11 @@ def switch(ip, un, pw):
     print("Accessing vps.....")
     for i in range(5):
         stdin, stdout, stderr = client.exec_command('docker logs -t --tail=100 exorde'+str(i))
-        stdout=stdout.readlines()
-        print(stdout)
+        while True;
+            line=stdout.readline()
+            if not line:
+                brek;
+                print(line, end="")
         stdin.close()
         sleep(5)
         
