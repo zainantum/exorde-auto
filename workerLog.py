@@ -1,7 +1,7 @@
 import paramiko
 
 
-def switch():
+def switch(ip, un, pw):
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.connect(ip, username=un, password=pw)
@@ -19,4 +19,4 @@ with open('listIp.txt') as f:
    for line in f:
        data = line.split(";")
        print("Accessing "+str(data[0]))
-       switch()
+       switch(data[0],data[1],data[2])
