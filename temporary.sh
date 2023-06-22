@@ -15,8 +15,15 @@ read -p "Enter maximum worker do you want: " maxWorker
 echo 'export maxWorker='$maxWorker >> $HOME/.bash_profile
 read -p "Install docker? y or n: " dockerInstall
 read -p "Create swap? y or n " makeSwap
+read -p "Use Twitter? y or n " useTwitter
 if [ $makeSwap == "y" ]; then
         read -p "Enter swap do you want with G(exp: 4G): " maxSwap
+fi
+
+if [ $useTwitter == "y" ]; then
+        read -p "Enter Twitter Username: " ust
+	read -p "Enter Twitter Password: " pwt
+        read -p "Enter Twitter Email: " mailt
 fi
 
 source $HOME/.bash_profile
@@ -60,7 +67,11 @@ for (( i=1; i<=$maxWorker; i++ ))
 do
    name="exorde"$i
    echo "copy container $name"
-   docker run -d --memory=8g --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $mainAddress
+   if [ $useTwitter == "y" ]; then
+   	docker run -d --memory=8g --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $mainAddress --twitter_username ust --twitter_password pwt --twitter_email mailt
+   else
+        docker run -d --memory=8g --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $mainAddress
+   fi
    sleep 1
 done
 
