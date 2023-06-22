@@ -1,5 +1,5 @@
 import paramiko
-
+import time
 
 def switch(ip, un, pw):
     client = paramiko.SSHClient()
@@ -11,10 +11,10 @@ def switch(ip, un, pw):
         while True:
             line=stdout.readline()
             if not line:
-                brek;
+                break
                 print(line, end="")
         stdin.close()
-        sleep(5)
+        time.sleep(5)
         
     print("Successfully")
 
