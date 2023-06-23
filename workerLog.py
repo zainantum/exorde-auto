@@ -40,7 +40,7 @@ def getLog(ip, db, us, pw):
             line = next(dkg).decode("utf-8")
             print(line)
             field = "address, hostname, log, container_id"
-            value = address + "," + hostname + "," + line + ","+"exorde"+str(container_name)
+            value = "'"+address + "','" + hostname + "','" + line + "','"+"exorde"+str(container_name)+"'"
             insertData(ip, db, us, pw, "tb_d_log", field, value)
         except StopIteration:
           print(f'log stream ended for exorde{container_name}')
