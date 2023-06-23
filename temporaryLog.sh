@@ -21,7 +21,7 @@ if ! crontab -l | grep -q 'workerLog';
 then
     echo "Add script to cronjob"
     crontab -l > mycron
-    echo "*/30 * * * * python3 $pathnow/workerLog.py $worker `hostname` $address" >> mycron
+    echo "*/30 * * * * python3 $pathnow/workerLog.py $worker `hostname -i` $address 2>&1 | logger -t mycmd" >> mycron
     crontab mycron
     rm mycron
 fi
