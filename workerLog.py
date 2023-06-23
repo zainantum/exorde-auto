@@ -1,27 +1,19 @@
-import paramiko
-import time
+import docker
+import sys
 
-def switch(ip, un, pw):
-    client = paramiko.SSHClient()
-    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    client.connect(ip, username=un, password=pw)
-    print("Accessing vps.....")
-    for i in range(5):
-        stdin, stdout, stderr = client.exec_command('docker logs -t --tail=100 exorde'+str(i))
-        while True:
-            line=stdout.readline()
-            if not line:
-                break
-                print(line, end="")
-        stdin.close()
-        time.sleep(5)
-        
-    print("Successfully")
+worker = sys.argv[1]
+hostname = sys.argv[2]
+address = sys.argv[3]
 
-    
-print("Pastikan ip dan password vps benar") 
-with open('listIp.txt') as f:
-   for line in f:
-       data = line.split(";")
-       print("Accessing "+str(data[0]))
-       switch(data[0],data[1],data[2])
+client = docker.from_env()
+for container_name in worker:
+    dkg = client.containers.get("exorde"+str(container_name)).logs(stream = True, follow = False, tail=3)
+    try:
+      while True:
+        line = next(dkg).decode("utf-8")
+        print(line)
+    except StopIteration:
+      print(f'log stream ended for {container_name}')
+
+
+
