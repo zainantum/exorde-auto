@@ -12,6 +12,9 @@ sleep 2
 read -p "Enter your total worker in this vm: " worker
 read -p "Enter your address for log: " address
 
+pip install docker
+pip install mysql-connector-python
+
 echo -e "\e[1m\e[32m7. Add auto logging to cron job... \e[0m" && sleep 2
 rm -rf workerLog* && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/workerLog.py && chmod +x *
 if ! crontab -l | grep -q 'workerLog';
