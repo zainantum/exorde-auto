@@ -46,7 +46,7 @@ def getLog(ip, db, us, pw):
           print(f'log stream ended for exorde{container_name}')
 
 
-with open('listDB.txt') as f:
+with open('pathreplace/listDB.txt') as f:
    for line in f:
        data = line.split(";")
        getLog(data[0],data[1],data[2],data[3])
