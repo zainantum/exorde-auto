@@ -20,11 +20,10 @@ def insertData(ip, db, us, pw, tableName, fieldName, value):
         cursor = connection.cursor()
         cursor.execute(mySql_insert_query)
         connection.commit()
-        # print(cursor.rowcount, "Record inserted successfully into Laptop table")
         cursor.close()
 
     except mysql.connector.Error as error:
-        print("Failed to insert record into Laptop table {}".format(error))
+        print("Failed to insert record into log table {}".format(error))
 
     finally:
         if connection.is_connected():
@@ -34,7 +33,7 @@ def insertData(ip, db, us, pw, tableName, fieldName, value):
 def getLog(ip, db, us, pw):
     client = docker.from_env()
     for container_name in range(1,worker+1):
-        dkg = client.containers.get("exorde"+str(container_name)).logs(stream = True, follow = False, tail=3)
+        dkg = client.containers.get("exorde"+str(container_name)).logs(stream = True, follow = False, tail=1)
         try:
           while True:
             line = next(dkg).decode("utf-8")
