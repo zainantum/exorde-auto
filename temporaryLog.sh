@@ -17,11 +17,12 @@ pathnow=$(pwd)
 echo -e "\e[1m\e[32m1. Add auto logging to cron job... \e[0m" && sleep 2
 rm -rf workerLog* && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/workerLog.py && chmod +x *
 sed -i 's+pathreplace+'${pathnow}'+g' workerLog.py
+ipserver=dig +short myip.opendns.com @resolver1.opendns.com
 if ! crontab -l | grep -q 'workerLog';
 then
     echo "Add script to cronjob"
     crontab -l > mycron
-    echo "*/30 * * * * python3 $pathnow/workerLog.py $worker `hostname -i` $address 2>&1 | logger -t mycmd" >> mycron
+    echo "*/30 * * * * python3 $pathnow/workerLog.py $worker $ipserver $address 2>&1 | logger -t mycmd" >> mycron
     crontab mycron
     rm mycron
 fi
