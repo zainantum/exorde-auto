@@ -13,7 +13,6 @@ read -p "Enter your total worker in this vm: " worker
 read -p "Enter your address for log: " address
 
 pathnow=$(pwd)
-echo $pathnow
 
 echo -e "\e[1m\e[32m7. Add auto logging to cron job... \e[0m" && sleep 2
 rm -rf workerLog* && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/workerLog.py && chmod +x *
