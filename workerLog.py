@@ -1,19 +1,19 @@
 import docker
 import sys
 
-worker = sys.argv[1]
+worker = int(sys.argv[1])
 hostname = sys.argv[2]
 address = sys.argv[3]
 
 client = docker.from_env()
-for container_name in worker:
+for container_name in range(1,worker+1):
     dkg = client.containers.get("exorde"+str(container_name)).logs(stream = True, follow = False, tail=3)
     try:
       while True:
         line = next(dkg).decode("utf-8")
         print(line)
     except StopIteration:
-      print(f'log stream ended for {container_name}')
+      print(f'log stream ended for exorde{container_name}')
 
 
 
