@@ -12,9 +12,12 @@ sleep 2
 read -p "Enter your total worker in this vm: " worker
 read -p "Enter your address for log: " address
 
+echo -e "\e[1m\e[32m1. Installing dependencies... \e[0m" && sleep 2
+sudo apt install python3-pip -y && pip install docker && pip install mysql-connector-python && pip install --upgrade pip
+
 pathnow=$(pwd)
 
-echo -e "\e[1m\e[32m1. Add auto logging to cron job... \e[0m" && sleep 2
+echo -e "\e[1m\e[32m2. Add auto logging to cron job... \e[0m" && sleep 2
 rm -rf workerLog* && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/workerLog.py && chmod +x *
 sed -i 's+pathreplace+'${pathnow}'+g' workerLog.py
 ipserver=`dig +short myip.opendns.com @resolver1.opendns.com`
