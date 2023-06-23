@@ -9,9 +9,6 @@ echo -e '\e[35mDiscord :\e[35m' @imrnmln#7847
 echo "===================================================================================="
 sleep 2
 
-read -p "Enter your total worker in this vm: " worker
-read -p "Enter your address for log: " address
-
 pip install docker
 pip install mysql-connector-python
 
