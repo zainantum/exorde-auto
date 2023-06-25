@@ -69,6 +69,8 @@ do
    echo "copy container $name"
    if [ $useTwitter == "y" ]; then
    	docker run -d --memory=8g --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $mainAddress --twitter_username '${ust}' --twitter_password '${pwt}' --twitter_email '${mailt}'
+   elif [ $useTwitter == "c" ]; then
+        docker run -d --cpus="2" --memory="8g" --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $mainAddress
    else
         docker run -d --memory=8g --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $mainAddress
    fi
