@@ -6,8 +6,5 @@ do
     docker logs $pid 2>&1 | grep "REP"
     sleep 1
     echo "Log worker $pid: new item"
-    docker logs $pid 2>&1 | grep "new item"
-    sleep
-    echo "Log worker $pid: crashed"
-    docker logs $pid 2>&1 | grep "crashed"
+    docker logs $pid -t --tail=50
 done
