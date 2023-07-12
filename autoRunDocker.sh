@@ -14,24 +14,27 @@ if [ ! $mainAddress ]; then
 	echo 'export mainAddress='$mainAddress >> $HOME/.bash_profile
 fi
 
-read -p "Enter maximum worker do you want: " maxWorker
+read -p "Enter total worker do you want: " maxWorker
 echo 'export maxWorker='$maxWorker >> $HOME/.bash_profile
 
-read -p "Enter log of worker do you want: " maxLog
-echo 'export maxLog='$maxLog >> $HOME/.bash_profile
-
 read -p "Install docker? y or n: " dockerInstall
-echo 'export dockerInstall='$dockerInstall >> $HOME/.bash_profile
+read -p "Use Twitter? y or n " useTwitter
 
 source $HOME/.bash_profile
 echo -e "\e[1m\e[32mYour Detail\e[0m"
 echo '================================================='
 echo -e "Your Main Address: \e[1m\e[32m$mainAddress\e[0m"
-echo -e "Worker Log: \e[1m\e[32m$maxLog\e[0m"
 echo -e "Install Docker: \e[1m\e[32m$dockerInstall\e[0m"
-echo -e "Maximum Worker: \e[1m\e[32m$maxWorker\e[0m"
+echo -e "Total Worker: \e[1m\e[32m$maxWorker\e[0m"
+echo -e "Use Twitter: \e[1m\e[32m$useTwitter\e[0m"
 echo '================================================='
 sleep 2
+
+if [ $useTwitter == "y" ]; then
+        read -p "Enter Twitter Username: " ust
+	read -p "Enter Twitter Password: " pwt
+        read -p "Enter Twitter Email: " mailt
+fi
 
 if [ $dockerInstall == "y" ]; then
 	echo -e "\e[1m\e[32m1a. Installing Docker... \e[0m" && sleep 2
@@ -54,28 +57,30 @@ for (( i=1; i<=$maxWorker; i++ ))
 do
    name="exorde"$i
    echo "copy container $name"
-   docker run -d --restart unless-stopped --pull always --name $name --log-opt max-size=5m --log-opt max-file=5 exordelabs/exorde-cli -m $mainAddress -l $maxLog
+   if [ $useTwitter == "y" ]; then
+   	docker run -d --cpus="2" --memory="8g" --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $mainAddress --twitter_username "$ust" --twitter_password "$pwt" --twitter_email "$mailt"
+   elif [ $useTwitter == "c" ]; then
+        docker run -d --cpus="2" --memory="8g" --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $mainAddress
+   elif [ $useTwitter == "d" ]; then
+        docker run -d --cpus="4" --memory="16g" --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $mainAddress
+   else
+        docker run -d --cpus="2" --memory="8g" --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $mainAddress
+   fi
    sleep 1
 done
 
-echo -e "\e[1m\e[32m3. Downloading auto restart and report... \e[0m" && sleep 2
-wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/installReportDocker.sh && chmod 777 installReportDocker.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sendLogDocker.sh && chmod 777 sendLogDocker.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sendReport.py && chmod 777 sendReport.py && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/stuckDocker.sh && chmod 777 stuckDocker.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/updaterDocker.sh && chmod 777 updaterDocker.sh && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/logDocker.sh && chmod 777 logDocker.sh
-wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sd.sh && chmod +x sd.sh
-wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/sde.sh && chmod +x sde.sh
-wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/createWorkerDocker.sh && chmod +x createWorkerDocker.sh
-echo -e "\e[1m\e[32m4. Add auto restart to cronjob... \e[0m" && sleep 2
-pathFileRestart=$(realpath stuckDocker.sh)
-pathFileRestart1=$(realpath sd.sh)
-pathFileRestart2=$(realpath sde.sh)
-if ! crontab -l | grep -q 'stuckDocker';
+echo -e "\e[1m\e[32m3. Add auto update to newest version... \e[0m" && sleep 2
+docker run -d --name watchtower -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower exorde1 -i 1800
+
+echo -e "\e[1m\e[32m4. Add auto re-create container (when disk space to low) to cronjob... \e[0m" && sleep 2
+rm -rf checkDisk* && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/checkDisk.sh && chmod +x *
+pathFileRestart=$(realpath checkDisk.sh)
+if ! crontab -l | grep -q 'checkDisk';
 then
-    echo "Adding auto restart script to cronjob"
+    echo "Adding auto re-create container if space disk less than 300MB to cronjob"
     crontab -l > mycron
-    echo "*/15 * * * * $pathFileRestart" >> mycron
-    echo "*/15 * * * * $pathFileRestart1" >> mycron
-    echo "*/5 * * * * $pathFileRestart2" >> mycron
+    echo "*/10 * * * * $pathFileRestart" >> mycron
     crontab mycron
     rm mycron
 fi
 echo '=============== DONE ==================='
-echo -e "\e[1m\e[32m If auto restart doesnt exists in crontab, please report issue and add manually for now... \e[0m" && sleep 1
