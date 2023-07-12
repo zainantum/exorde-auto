@@ -1,4 +1,4 @@
-Exorde Testnet using docker
+# Exorde Testnet using docker
 1. run autoRunDocker.sh
 ```wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/autoRunDocker.sh && chmod 777 autoRunDocker.sh && ./autoRunDocker.sh```
 2. after script autoRunDocker.sh complete you can check your worker with ```docker ps```
