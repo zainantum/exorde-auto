@@ -1,14 +1,8 @@
 clear
-mainAddress = $1
-maxWorker = $2
-dockerInstall = $3
-makeSwap = $4
-useTwitter = $5
+echo 'export mainAddress='$1 >> $HOME/.bash_profile
+echo 'export maxWorker='$2 >> $HOME/.bash_profile
 
-echo 'export mainAddress='$mainAddress >> $HOME/.bash_profile
-echo 'export maxWorker='$maxWorker >> $HOME/.bash_profile
-
-if [ $makeSwap == "y" ]; then
+if [ $4 == "y" ]; then
 	swapoff -a
 	fallocate -l $6 /swapfile
 	chmod 600 /swapfile
@@ -18,7 +12,7 @@ if [ $makeSwap == "y" ]; then
 	echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 fi
 
-if [ $dockerInstall == "y" ]; then
+if [ $3 == "y" ]; then
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
   sleep 1
   echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
@@ -33,15 +27,15 @@ if [ $dockerInstall == "y" ]; then
   docker version
 fi
 
-for (( i=1; i<=$maxWorker; i++ ))
+for (( i=1; i<=$2; i++ ))
 do
    name="exorde"$i
-   if [ $useTwitter == "c" ]; then
-        docker run -d --cpus="2" --memory="8g" --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $mainAddress
-   elif [ $useTwitter == "d" ]; then
-        docker run -d --cpus="4" --memory="16g" --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $mainAddress
+   if [ $5 == "c" ]; then
+        docker run -d --cpus="2" --memory="8g" --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $1
+   elif [ $5 == "d" ]; then
+        docker run -d --cpus="4" --memory="16g" --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $1
    else
-        docker run -d --cpus="2" --memory="8g" --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $mainAddress
+        docker run -d --cpus="2" --memory="8g" --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $1
    fi
    sleep 1
 done
