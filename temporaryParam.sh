@@ -34,6 +34,8 @@ do
         docker run -d --cpus="2" --memory="8g" --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $1
    elif [ $5 == "d" ]; then
         docker run -d --cpus="4" --memory="16g" --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $1
+   elif [ $5 == "e" ]; then
+        docker run -d --cpus="2" --memory="16g" --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $1
    else
         docker run -d --cpus="2" --memory="8g" --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $1
    fi
