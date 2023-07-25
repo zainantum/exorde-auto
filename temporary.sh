@@ -44,6 +44,7 @@ if [ $makeSwap == "y" ]; then
 	swapon /swapfile
 	sudo cp /etc/fstab /etc/fstab.bak
 	echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+ 	sysctl vm.swappiness=5
 fi
 
 if [ $dockerInstall == "y" ]; then
