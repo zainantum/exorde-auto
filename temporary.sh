@@ -81,7 +81,7 @@ do
 done
 
 echo -e "\e[1m\e[32m3. Add auto update to newest version... \e[0m" && sleep 2
-docker run -d --name watchtower -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower exorde1 -i 1800
+docker run -d --restart unless-stopped --name watchtower -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower exorde1 -i 1800
 
 echo -e "\e[1m\e[32m4. Add auto re-create container to cronjob... \e[0m" && sleep 2
 rm -rf checkDisk* && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/checkDisk.sh && chmod +x *
