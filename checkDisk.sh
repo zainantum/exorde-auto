@@ -11,6 +11,9 @@ else
     sleep 5
     docker rm -f $(docker ps -a -qf "name=^exorde")
     sleep 5
+    if [ $size == 0 ]; then
+        yes | docker system prune -a && yes | docker image prune && yes | docker rmi $(docker images -a -q) && yes | docker volume prune
+    fi
     echo "installing new worker by bash profile variable"
     for (( i=1; i<=$maxWorker; i++ ))
     do
