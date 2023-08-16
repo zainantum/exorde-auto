@@ -19,7 +19,7 @@ else
     do
         name="exorde"$i
         echo "Create container $name"
-        docker run -d --cpus="2" --memory="8g" --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $mainAddress
+        docker run -d --cpus="2" --memory="16g" --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $mainAddress --only youtube,reddit,4chan
         sleep 1
     done
 fi
