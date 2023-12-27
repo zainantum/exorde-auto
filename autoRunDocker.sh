@@ -15,10 +15,10 @@ if [ ! $mainAddress ]; then
 fi
 
 read -p "Install docker? y or n: " dockerInstall
-read -p "Use Twitter? y or n " useTwitter
-read -p "CPU Limit (2, 4, 8 etc) " limitCpu
-read -p "RAM Limit (8g, 12g, 16g etc) " limitRam
-read -p "choose resource twitter, reddit, youtube, 4chan etc. exp: twitter or twitter,reddit " sourceUrl
+read -p "Use Twitter? y or n: " useTwitter
+read -p "CPU Limit (2, 4, 8 etc): " limitCpu
+read -p "RAM Limit (8g, 12g, 16g etc): " limitRam
+read -p "choose resource twitter, reddit, youtube, 4chan etc. exp: twitter or twitter,reddit: " sourceUrl
 
 source $HOME/.bash_profile
 echo -e "\e[1m\e[32mYour Detail\e[0m"
