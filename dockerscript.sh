@@ -1,0 +1,1 @@
+docker run -d --cpus="replace_cpu" --memory="replace_ram" --restart unless-stopped --pull always --name replace_name exordelabs/exorde-client --main_address replace_address --twitter_username 'replace_ustw' --twitter_password 'replace_pwtw' --twitter_email 'replace_mailtw' --only replace_only
