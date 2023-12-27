@@ -14,18 +14,17 @@ if [ ! $mainAddress ]; then
 	echo 'export mainAddress='$mainAddress >> $HOME/.bash_profile
 fi
 
-read -p "Enter total worker do you want: " maxWorker
-echo 'export maxWorker='$maxWorker >> $HOME/.bash_profile
-
 read -p "Install docker? y or n: " dockerInstall
 read -p "Use Twitter? y or n " useTwitter
+read -p "CPU Limit (2, 4, 8 etc) " limitCpu
+read -p "RAM Limit (8g, 12g, 16g etc) " limitRam
+read -p "choose resource twitter, reddit, youtube, 4chan etc. exp: twitter or twitter,reddit " sourceUrl
 
 source $HOME/.bash_profile
 echo -e "\e[1m\e[32mYour Detail\e[0m"
 echo '================================================='
 echo -e "Your Main Address: \e[1m\e[32m$mainAddress\e[0m"
 echo -e "Install Docker: \e[1m\e[32m$dockerInstall\e[0m"
-echo -e "Total Worker: \e[1m\e[32m$maxWorker\e[0m"
 echo -e "Use Twitter: \e[1m\e[32m$useTwitter\e[0m"
 echo '================================================='
 sleep 2
@@ -39,48 +38,37 @@ fi
 if [ $dockerInstall == "y" ]; then
 	echo -e "\e[1m\e[32m1a. Installing Docker... \e[0m" && sleep 2
 	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-  sleep 1
-  echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-  sleep 1
-  sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release -y
-  sleep 1
-  sudo apt-get update
-  sudo apt-get install docker-ce docker-ce-cli containerd.io -y
-  sleep 1
-  sudo usermod -aG docker $USER
-  sleep 1
-  docker version
+	  sleep 1
+	  echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+	  sleep 1
+	  sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release -y
+	  sleep 1
+	  sudo apt-get update
+	  sudo apt-get install docker-ce docker-ce-cli containerd.io -y
+	  sleep 1
+	  sudo usermod -aG docker $USER
+	  sleep 1
+	  docker version
+	  wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/dockerscript.sh && chmod +x dockerscript.sh
 fi
 
-echo -e "\e[1m\e[32m2. Cloning exorde container... \e[0m" && sleep 2
-for (( i=1; i<=$maxWorker; i++ ))
-do
-   name="exorde"$i
-   echo "copy container $name"
-   if [ $useTwitter == "y" ]; then
-   	docker run -d --cpus="2" --memory="8g" --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $mainAddress --twitter_username "$ust" --twitter_password "$pwt" --twitter_email "$mailt"
-   elif [ $useTwitter == "c" ]; then
-        docker run -d --cpus="2" --memory="8g" --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $mainAddress
-   elif [ $useTwitter == "d" ]; then
-        docker run -d --cpus="4" --memory="16g" --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $mainAddress
-   else
-        docker run -d --cpus="2" --memory="8g" --restart unless-stopped --pull always --name $name exordelabs/exorde-client --main_address $mainAddress
-   fi
-   sleep 1
-done
+echo -e "\e[1m\e[32m2. Create worker Exorde1... \e[0m" && sleep 2
+name="exorde1"
+echo "copy container $name"
+sed -i -e "s|replace_cpu*|$limitCpu|" dockerscript.sh
+sed -i -e "s|replace_ram*|$limitRam|" dockerscript.sh
+sed -i -e "s|replace_name*|$name|" dockerscript.sh
+sed -i -e "s|replace_address*|$mainAddress|" dockerscript.sh
+sed -i -e "s|replace_only*|$sourceUrl|" dockerscript.sh
+if [ $useTwitter == "y" ]; then
+	sed -i -e "s|replace_ustw*|$ust|" dockerscript.sh
+	sed -i -e "s|replace_pwtw*|$pwt|" dockerscript.sh
+	sed -i -e "s|replace_mailtw*|$mailt|" dockerscript.sh
+fi
+sleep 1
+bash dockerscript.sh
 
 echo -e "\e[1m\e[32m3. Add auto update to newest version... \e[0m" && sleep 2
 docker run -d --name watchtower -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower exorde1 -i 1800
 
-echo -e "\e[1m\e[32m4. Add auto re-create container (when disk space to low) to cronjob... \e[0m" && sleep 2
-rm -rf checkDisk* && wget https://raw.githubusercontent.com/zainantum/exorde-auto/main/checkDisk.sh && chmod +x *
-pathFileRestart=$(realpath checkDisk.sh)
-if ! crontab -l | grep -q 'checkDisk';
-then
-    echo "Adding auto re-create container if space disk less than 300MB to cronjob"
-    crontab -l > mycron
-    echo "*/10 * * * * $pathFileRestart" >> mycron
-    crontab mycron
-    rm mycron
-fi
 echo '=============== DONE ==================='
